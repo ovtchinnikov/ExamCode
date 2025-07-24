@@ -5,7 +5,7 @@ import string
 import datetime
 import json
 
-#sinnvoller Kommentar für git
+#sinnvoller Kommentar für gitttt
 
 EINSTELLUNGEN_DATEI = "last_test_settings.json"
 
