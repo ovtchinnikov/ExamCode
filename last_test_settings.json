@@ -1,0 +1,11 @@
+{
+    "methode": "sorted",
+    "modus": "practice",
+    "anzahl": 50,
+    "seed": null,
+    "start_nr": 430,
+    "letzter_score": {
+        "punkte": 18,
+        "anzahl": 50
+    }
+}
