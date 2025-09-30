@@ -1,0 +1,531 @@
+==================================================
+### Prüfungsprotokoll ###
+Datum: 25.07.2025, 09:39:06 Uhr
+Modus: Practice
+Auswahl: Wiederholung (sorted) (50 Fragen)
+
+--- Endergebnis ---
+Punkte: 44 von 50
+Erfolgsquote: 88.00%
+==================================================
+
+--- Frage Nr. 530 (Falsch) ---
+Frage: Which stages are created by default, with no need to use the CREATE STAGE command? (Choose two.)
+Deine Antwort:     A, B
+Korrekte Antwort:  D, E
+
+Erklärung:
+DE are created by default
+https://docs.snowflake.com/en/user-guide/data-load-local-file-system-create-stage
+--------------------------------------------------
+
+--- Frage Nr. 531 (Richtig) ---
+Frage: While working with unstructured data, which file function generates a Snowflake-hosted file URL to a staged file using the stage name and relative file path as inputs?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Agree with A
+https://docs.snowflake.com/en/sql-reference/functions/build_stage_file_url
+For this question, answers AC are both correct in my opinion.
+--------------------------------------------------
+
+--- Frage Nr. 532 (Richtig) ---
+Frage: Who can create and manage reader accounts? (Choose two.)
+Deine Antwort:     A, E
+Korrekte Antwort:  A, E
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-sharing-reader-create
+"All tasks described in this topic must be performed using the ACCOUNTADMIN role or a role granted the CREATE ACCOUNT global privilege."
+--------------------------------------------------
+
+--- Frage Nr. 533 (Richtig) ---
+Frage: Which command allows for continuous loading of data files as soon as they are available in a stage?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - that's just what pipes does, no further explanation needed
+https://docs.snowflake.com/en/sql-reference/sql/create-pipe
+--------------------------------------------------
+
+--- Frage Nr. 534 (Richtig) ---
+Frage: What is an advantage of using database roles instead of granting privileges on objects directly to a share in Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+But instead granting the shared database role allows the user to access only the subset of shared objects granted to the database role. The shared Database roles allow different groups of users in a data consumer account to access different subsets of the shared objects. https://community.snowflake.com/s/article/How-to-use-Database-Roles-in-a-Data-Share
+--------------------------------------------------
+
+--- Frage Nr. 535 (Richtig) ---
+Frage: What is the order of precedence (highest to lowest) of network policies when applied at the account, user, and security integrations layers?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Account is overriden by Security Integration, that is overriden by User  https://docs.snowflake.com/en/user-guide/network-policies#:~:text=%27block_access_rule%27)%3B-,Network%20policy%20precedence,-%C2%B6
+It's B : https://docs.snowflake.com/en/user-guide/network-policies The following summarizes the order of precedence:  Account Network policies applied to an account are the most general network policies. They are overridden by network policies applied to a security integration or user.  Security Integration Network policies applied to a security integration override network policies applied to the account, but are overridden by a network policy applied to a user.  User Network policies applied to a user are the most specific network policies. They override both accounts and security integrations.
+--------------------------------------------------
+
+--- Frage Nr. 536 (Richtig) ---
+Frage: Which type of Snowflake virtual warehouse provides 16 times the memory for each node, and is recommended for larger workloads like Machine Learning (ML) training?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Agree with D
+SnowPark-optimized virtual warehouse is designed for high memory requirements, such as ML workloads, ML training datasets, and other memory-intensive tasks. It provides 16 times more memory per node than a standard virtual warehouse, making it an excellent choice for handling such workloads on a single virtual warehouse.
+--------------------------------------------------
+
+--- Frage Nr. 537 (Richtig) ---
+Frage: Which common query issues can be identified by the Query Profile? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+Agre with BD
+It's B D : https://docs.snowflake.com/en/user-guide/ui-query-profile#common-query-problems-identified-by-query-profile
+--------------------------------------------------
+
+--- Frage Nr. 538 (Richtig) ---
+Frage: In Snowflake, what allows users to perform recursive queries?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D  https://docs.snowflake.com/en/sql-reference/constructs/connect-by
+--------------------------------------------------
+
+--- Frage Nr. 539 (Richtig) ---
+Frage: A user wants to create objects within a schema but wants to restrict other users’ ability to grant privileges on these objects.
+
+What configuration should be used to create the schema?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/sql/create-schema#optional-parameters
+https://docs.snowflake.com/en/user-guide/security-access-control-privileges
+In Snowflake, a managed access schema allows the schema owner (or a designated role) to have full control over granting privileges on objects within the schema. In this configuration, only the schema owner can grant or revoke privileges on the objects within the schema, preventing other users from doing so.
+--------------------------------------------------
+
+--- Frage Nr. 540 (Richtig) ---
+Frage: What is the MOST cost-effective way to resolve memory spillage in a virtual warehouse?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D - others explanation are good
+B. Enable the query acceleration service. The query acceleration service dynamically adds additional compute resources (more CPU and memory) to a virtual warehouse when queries require more resources than initially allocated. This can be a cost-effective solution as it only scales up resources temporarily during peak demand, potentially reducing memory spillage without the need to permanently increase the warehouse size.
+https://docs.snowflake.com/en/user-guide/performance-query-warehouse-memory
+--------------------------------------------------
+
+--- Frage Nr. 541 (Richtig) ---
+Frage: What objects in Snowflake are supported by Dynamic Data Masking? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  A, C
+
+Erklärung:
+AC - Data masking is supported on views and tables
+"Snowflake supports using Dynamic Data Masking on tables and views."
+https://docs.snowflake.com/en/user-guide/security-column-ddm-intro#:~:text=Snowflake%20supports%20using%20Dynamic%20Data%20Masking%20on%20tables%20and%20views
+Dynamic Data Masking is a Column-level Security feature that uses masking policies to selectively mask plain-text data in table and view columns at query time.
+--------------------------------------------------
+
+--- Frage Nr. 542 (Falsch) ---
+Frage: A user has created a dashboard in Snowflake and wants to share it with colleagues.
+
+How can the dashboard be shared?
+Deine Antwort:     A
+Korrekte Antwort:  B
+
+Erklärung:
+Agree with B
+https://docs.snowflake.com/en/user-guide/ui-snowsight-dashboards#share-dashboards
+https://www.chaosgenius.io/blog/snowflake-snowsight-guide/
+--------------------------------------------------
+
+--- Frage Nr. 543 (Richtig) ---
+Frage: When would Snowsight automatically detect if a target account is in a different region and enable cross-cloud auto-fulfillment?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct.
+https://other-docs.snowflake.com/en/collaboration/provider-listings-auto-fulfillment#about-cross-cloud-auto-fulfillment  " If your data product is a share, use auto-fulfillment in most cases. For all listings shared with specific consumer accounts, Snowsight automatically detects whether or not the target account is in a different region and enables auto-fulfillment. You cannot manually replicate private listings to other regions. "  Listing with specific consumer accounts > B
+D  https://other-docs.snowflake.com/en/collaboration/provider-listings-auto-fulfillment#:~:text=When%20you%20share%20a%20private%20listing%2C%20the%20database%20is%20auto%2Dfulfilled%20after%20the%20specified%20consumers%20get%20your%20listing
+Direct share works only in the same region: https://docs.snowflake.com/en/user-guide/data-sharing-intro#options-for-sharing-in-snowflake  Thus, D seems not correct.
+--------------------------------------------------
+
+--- Frage Nr. 544 (Richtig) ---
+Frage: Which languages require that User-Defined Function (UDF) handlers be written inline? (Choose two.)
+Deine Antwort:     B, E
+Korrekte Antwort:  B, E
+
+Erklärung:
+BE is correct https://docs.snowflake.com/en/developer-guide/udf/udf-overview
+It's B & E : https://docs.snowflake.com/en/developer-guide/udf/udf-overview#language-choice
+BE  https://docs.snowflake.com/en/developer-guide/udf/udf-overview
+--------------------------------------------------
+
+--- Frage Nr. 545 (Richtig) ---
+Frage: Which task privilege does a Snowflake role need in order to suspend or resume a task?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B - OPERATE
+B  https://docs.snowflake.com/en/sql-reference/sql/alter-task#:~:text=Resuming%20or%20suspending%20a%20task%20(using%20ALTER%20TASK%20%E2%80%A6%20RESUME%20or%20ALTER%20TASK%20%E2%80%A6%20SUSPEND%2C%20respectively)%20requires%20either%20the%20OWNERSHIP%20or%20OPERATE%20privilege%20on%20the%20task
+Correct Answer: B. OPERATE The OPERATE privilege allows a role to execute operational actions on a task, such as suspending, resuming, and executing the task. This privilege is necessary for managing the state of tasks within Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 546 (Richtig) ---
+Frage: What is a directory table in Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct
+B  https://docs.snowflake.com/en/user-guide/data-load-dirtables#:~:text=using%20directory%20tables.-,What%20is%20a%20directory%20table%3F,-%C2%B6
+"A directory table is an implicit object layered on a stage (not a separate database object) and is conceptually similar to an external table because it stores file-level metadata about the data files in the stage."
+--------------------------------------------------
+
+--- Frage Nr. 547 (Richtig) ---
+Frage: What factors impact storage costs in Snowflake? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  A, C
+
+Erklärung:
+at the Snowflake billing layer your storage charge is simply a flat $/TB‑month rate, and that published rate only varies by:   Account type (On‑Demand vs Capacity pre‑purchase)   Region (US, EU, APAC, etc.)  All of the “cloud platform” differences are already baked into the single per‑TB list prices Snowflake publishes; you as a customer simply pick On‑Demand or Capacity and a region, and you pay that flat rate. The other choices (file format, data type, underlying provider) don’t change your Snowflake‑billed per‑TB price.
+"The amount charged depends on your type of account (Capacity or On Demand) and region (US or EU)"
+A,C, E The monthly costs for storing data in Snowflake are based on a flat rate per terabyte (TB) of consumption (after being compressed). The amount charged is determined by your account type (capacity or on demand), Cloud Platform, and the region, whether in the United States, Asia, or Europe.
+In this page,  https://docs.snowflake.com/en/user-guide/cost-understanding-data-storage it mentioned that,  > The amount charged depends on your type of account (Capacity or On Demand) and region (US or EU).  So it should be A and C
+--------------------------------------------------
+
+--- Frage Nr. 548 (Richtig) ---
+Frage: Which ACCOUNT_USAGE schema database role provides visibility into policy-related information?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Agree with B
+"The GOVERNANCE_VIEWER role provides visibility into policy related information."
+B  https://docs.snowflake.com/en/sql-reference/snowflake-db-roles
+--------------------------------------------------
+
+--- Frage Nr. 549 (Richtig) ---
+Frage: How should clustering be used to optimize the performance of queries that run on a very large table?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+C, having select columns as clustering key may help directly improve a query D- But only accessing the information cant help optimize. Hence C.
+D is correct
+its D  select clause is the column you choose to select. We dont care about that. We care about the columns being filtered in the WHERE clause.
+It's C : https://docs.snowflake.com/en/user-guide/tables-clustering-keys#strategies-for-selecting-clustering-keys "Selecting the right columns/expressions for a clustering key can dramatically impact query performance. Analysis of your workload will usually yield good clustering key candidates.  Snowflake recommends prioritizing keys in the order below:  Cluster columns that are most actively used in selective filters"
+--------------------------------------------------
+
+--- Frage Nr. 550 (Richtig) ---
+Frage: Which privilege must be granted by one role to another role, and cannot be revoked?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C OWNERSHIP cannot be revoked
+OWNERSHIP is a special type of privilege that can only be granted from one role to another role; it cannot be revoked
+C  https://docs.snowflake.com/en/sql-reference/sql/grant-ownership
+--------------------------------------------------
+
+--- Frage Nr. 551 (Falsch) ---
+Frage: How can performance be optimized for a query that returns a small amount of data from a very large base table?
+Deine Antwort:     A
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct
+"The search optimization service aims to significantly improve the performance of certain types of queries on tables, including: Selective point lookup queries on tables. A point lookup query returns only one or a small number of distinct rows. Use case examples include: Business users who need fast response times for critical dashboards with highly selective filters. Data scientists who are exploring large data volumes and looking for specific subsets of data. Data applications retrieving a small set of results based on an extensive set of filtering predicates."
+C  https://docs.snowflake.com/en/user-guide/search-optimization-service#:~:text=Selective%20point%20lookup%20queries%20on%20tables.%20A%20point%20lookup%20query%20returns%20only%20one%20or%20a%20small%20number%20of%20distinct%20rows
+It's C : https://docs.snowflake.com/en/user-guide/search-optimization-service
+--------------------------------------------------
+
+--- Frage Nr. 552 (Richtig) ---
+Frage: Use of which Snowflake function is recommended when unloading data from a relational table into a JSON file?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Yes, it is same with 1070. But, there the answer was TO_JSONE Even for this one the answer is TO_JSON. As long as the question does not mention anything related to construct an object, like Variant column, the answer is TO_JSONE
+--------------------------------------------------
+
+--- Frage Nr. 553 (Richtig) ---
+Frage: Which command should be used to generate a single file when unloading data from a Snowflake table into a file?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - straightforward
+--------------------------------------------------
+
+--- Frage Nr. 554 (Richtig) ---
+Frage: Which function can be used to convert semi-structured data into rows and columns?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B that's the purpose of Flatten + there is no mention of JSON in the question
+FLATTEN can be used to convert semi-structured data to a relational representation.
+--------------------------------------------------
+
+--- Frage Nr. 555 (Richtig) ---
+Frage: What user setting can be configured to disable Multi-Factor Authentication (MFA) for a Snowflake user? (Choose two.)
+Deine Antwort:     A, B
+Korrekte Antwort:  A, B
+
+Erklärung:
+A and B
+A and B.
+https://docs.snowflake.com/en/user-guide/security-mfa#managing-mfa-for-an-account-and-users
+its A and B
+--------------------------------------------------
+
+--- Frage Nr. 556 (Richtig) ---
+Frage: Which table type has a Fail-safe period of 7 days?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Agree with C
+Answer is C
+--------------------------------------------------
+
+--- Frage Nr. 557 (Richtig) ---
+Frage: How does Snowflake enable OAuth?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B - explained here https://docs.snowflake.com/en/user-guide/oauth-intro
+Correct Answer: B. By configuring a security integration Configuring a security integration: In Snowflake, OAuth is enabled by creating and configuring a security integration. This integration defines the settings and parameters required for Snowflake to interact with an OAuth 2.0 authorization server, allowing users to authenticate and authorize access to Snowflake resources using OAuth tokens.
+https://docs.snowflake.com/en/user-guide/oauth-intro  Administrators configure OAuth using a Security integration, which enables clients that support OAuth to redirect users to an authorization page and generate access tokens (and optionally, refresh tokens) for accessing Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 558 (Richtig) ---
+Frage: Which type of workload traditionally benefits from the use of the query acceleration service?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct
+Correct Answer: B. Workloads that include on-demand data analyses Workloads that include on-demand data analyses: These types of workloads often involve complex queries that need to be executed quickly and efficiently. The query acceleration service is designed to speed up query processing for such workloads by allocating additional resources, thus reducing query response times and improving performance for ad-hoc and interactive queries.
+--------------------------------------------------
+
+--- Frage Nr. 559 (Richtig) ---
+Frage: When unloading data, which combination of parameters should be used to differentiate between empty strings and NULL values? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+Agree with cybe explanation
+Correct Answers: C. FIELD_OPTIONALLY_ENCLOSED_BY and D. EMPTY_FIELD_AS_NULL FIELD_OPTIONALLY_ENCLOSED_BY: This parameter specifies a character that encloses the field. By using this parameter, you can ensure that empty strings are enclosed within the specified character (e.g., double quotes), allowing them to be differentiated from NULL values. EMPTY_FIELD_AS_NULL: This parameter determines how to handle empty fields during the unload operation. When set to TRUE, empty fields are treated as NULL values. This helps in distinguishing between actual empty strings and NULLs in the unloaded data.
+https://docs.snowflake.com/en/user-guide/data-unload-considerations
+--------------------------------------------------
+
+--- Frage Nr. 560 (Richtig) ---
+Frage: Which role must be used to create resource monitors?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Agree with B
+Correct Answer: B. ACCOUNTADMIN ACCOUNTADMIN: The ACCOUNTADMIN role in Snowflake has the necessary privileges to create and manage resource monitors. Resource monitors are used to manage and monitor the usage of resources (such as compute credits) within the Snowflake account. The ACCOUNTADMIN role has the highest level of administrative privileges required to perform this task.
+--------------------------------------------------
+
+--- Frage Nr. 561 (Richtig) ---
+Frage: What step does Snowflake recommend when loading data from a stage?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Answer C seems correct
+Answer for Q #1116 is C external function https://docs.snowflake.com/en/user-guide/unstructured-intro
+--------------------------------------------------
+
+--- Frage Nr. 562 (Falsch) ---
+Frage: How can a user MINIMIZE Continuous Data Protection costs when using large, high-churn, dimension tables?
+Deine Antwort:     B
+Korrekte Antwort:  A
+
+Erklärung:
+A - transient table are basically the same as regular table but do not utilize fail safe hence reducing the storage cost involved with them https://docs.snowflake.com/en/user-guide/tables-temp-transient#transient-tables
+For large, high-churn dimension tables that incur overly-excessive CDP costs, the solution is to create these tables as transient with zero Time Travel retention (i.e. DATA_RETENTION_TIME_IN_DAYS=0) and then copy these tables on a periodic basis into a permanent table.
+https://docs.snowflake.com/en/user-guide/tables-storage-considerations
+--------------------------------------------------
+
+--- Frage Nr. 563 (Richtig) ---
+Frage: Which Snowsight feature can be used to perform data manipulations and transformations using a programming language?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - SnowSQL is a command line tool and BD makes no sense
+It's the only answer
+--------------------------------------------------
+
+--- Frage Nr. 564 (Richtig) ---
+Frage: In Snowflake's data security framework, how does column-level security contribute to the protection of sensitive information? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+Agree with DE
+--------------------------------------------------
+
+--- Frage Nr. 565 (Richtig) ---
+Frage: How does Snowflake utilize clustering information to improve query performance?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A. It prunes unnecessary micro-partitions based on clustering metadata. This accurately describes the core mechanism. By using clustering metadata, Snowflake avoids scanning micro-partitions that do not contain the relevant data, leading to faster query execution.
+--------------------------------------------------
+
+--- Frage Nr. 566 (Richtig) ---
+Frage: How can staged files be removed during data loading once the files have loaded successfully?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B - that's what purge does :)
+Answer is B
+--------------------------------------------------
+
+--- Frage Nr. 567 (Richtig) ---
+Frage: What objects can be cloned within Snowflake? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/object-clone#cloning-and-stages
+CREATE <object> … CLONE Creates a copy of an existing object in the system. This command is primarily used for creating zero-copy clones of databases, schemas, and tables; however, it can also be used to quickly/easily create clones of other schema objects , such as external stages, file formats, and sequences, and database roles.  https://docs.snowflake.com/en/user-guide/object-clone
+--------------------------------------------------
+
+--- Frage Nr. 568 (Falsch) ---
+Frage: What can be used to process unstructured data?
+Deine Antwort:     C
+Korrekte Antwort:  A
+
+Erklärung:
+C is the correct answer
+C is correct
+External functions allow you to call external services/APIs to process unstructured data Useful for tasks like text analysis, image processing, or other complex transformations
+--------------------------------------------------
+
+--- Frage Nr. 569 (Richtig) ---
+Frage: Which type of workload is recommended for Snowpark-optimized virtual warehouses?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/warehouses-snowpark-optimized#when-to-use-a-snowpark-optimized-warehouse
+B is the right answer
+--------------------------------------------------
+
+--- Frage Nr. 570 (Richtig) ---
+Frage: What is the benefit of using the STRIP_OUTER_ARRAY parameter with the COPY INTO [table] command when loading data from a JSON file into a table?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+
+--------------------------------------------------
+
+--- Frage Nr. 571 (Richtig) ---
+Frage: A query containing a WHERE clause is running longer than expected. The Query Profile shows that all micro-partitions being scanned.
+
+How should this query be optimized?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Adding a clustering key would improve the depth and, in turn, pruning efficiency.
+--------------------------------------------------
+
+--- Frage Nr. 572 (Richtig) ---
+Frage: Which access control entity in Snowflake can be created as part of a hierarchy within an account?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B role is hierarchic
+--------------------------------------------------
+
+--- Frage Nr. 573 (Falsch) ---
+Frage: When an object is created in Snowflake, who owns the object?
+Deine Antwort:     D
+Korrekte Antwort:  C
+
+Erklärung:
+
+--------------------------------------------------
+
+--- Frage Nr. 574 (Richtig) ---
+Frage: What is the MINIMUM Snowflake edition that must be used in order to see the ACCESS_HISTORY view?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Agree with B
+Access History requires Enterprise Edition (or higher). To inquire about upgrading, please contact Snowflake Support. This Account Usage view can be used to query the access history of Snowflake objects (e.g. table, view, column) within the last 365 days (1 year).
+--------------------------------------------------
+
+--- Frage Nr. 575 (Richtig) ---
+Frage: Which role is responsible for managing the billing and credit data within Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/security-access-control-considerations#using-the-accountadmin-role
+The account administrator (i.e users with the ACCOUNTADMIN system role) role is the most powerful role in the system. This role alone is responsible for configuring parameters at the account level. Users with the ACCOUNTADMIN role can view and manage Snowflake billing and credit data, and can stop any running SQL statements.
+--------------------------------------------------
+
+--- Frage Nr. 576 (Richtig) ---
+Frage: What can be used to identify the database, schema, stage, and file path to a set of files, and to allow a role that has sufficient privileges on the stage to access the files?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/unstructured-intro
+It's B, File URL : URL that identifies the database, schema, stage, and file path to a set of files. A role that has sufficient privileges on the stage can access the files
+--------------------------------------------------
+
+--- Frage Nr. 577 (Richtig) ---
+Frage: Which command is used to remove files from either external cloud storage or an internal stage?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B. REMOVE Removes files from either an external (external cloud storage) or internal (i.e. Snowflake) stage. https://docs.snowflake.com/en/sql-reference/sql/remove
+--------------------------------------------------
+
+--- Frage Nr. 578 (Richtig) ---
+Frage: How does Snowflake recommend defining a clustering key on a high-cardinality column that includes a 15 digit ID numbered column, ID_NUMBER?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A - Using Trunc(ID_NUMBER, -6) we reduce the cardinality of the column by turning the last 6 digits of the ID to zeros https://docs.snowflake.com/fr/sql-reference/functions/trunc
+--------------------------------------------------
+
+--- Frage Nr. 579 (Richtig) ---
+Frage: Which query types will have significant performance improvement when run using the search optimization service? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+Point lookup queries are queries that are expected to return a small number of rows. The search optimization service can improve the performance of point lookup queries that use:  Equality predicates (for example, <column_name> = <constant>).  Predicates that use IN (see example).  Example
+B and D
+https://docs.snowflake.com/en/user-guide/search-optimization/point-lookup-queries
+--------------------------------------------------
+

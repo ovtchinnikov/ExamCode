@@ -1,11 +1,11 @@
 {
     "methode": "sorted",
     "modus": "practice",
-    "anzahl": 50,
+    "anzahl": 100,
     "seed": null,
-    "start_nr": 430,
+    "start_nr": 730,
     "letzter_score": {
-        "punkte": 19,
-        "anzahl": 50
+        "punkte": 94,
+        "anzahl": 100
     }
 }

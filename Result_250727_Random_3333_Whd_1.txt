@@ -1,0 +1,510 @@
+==================================================
+### Prüfungsprotokoll ###
+Datum: 27.07.2025, 15:15:32 Uhr
+Modus: Practice
+Auswahl: Wiederholung (random) (50 Fragen)
+Random Seed: 3333
+
+--- Endergebnis ---
+Punkte: 49 von 50
+Erfolgsquote: 98.00%
+==================================================
+
+--- Frage Nr. 432 (Richtig) ---
+Frage: How can data be shared between two users who have different Snowflake accounts?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+you create a share in the provider account, grant object privileges to that share, and then assign the IMPORT SHARE privilege to the appropriate role in the consumer account so they can CREATE DATABASE … FROM SHARE
+--------------------------------------------------
+
+--- Frage Nr. 280 (Richtig) ---
+Frage: Which cache type is used to cache data output from SQL queries?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Result Cache:  Which holds the results of every query executed in the past 24 hours. These are available across virtual warehouses, so query results returned to one user is available to any other user on the system who executes the same query, provided the underlying data has not changed. Local Disk Cache:  Which is used to cache data used by SQL queries. Whenever data is needed for a given query it's retrieved from the Remote Disk storage, and cached in SSD and memory.
+--------------------------------------------------
+
+--- Frage Nr. 235 (Richtig) ---
+Frage: Which data types are supported by Snowflake when using semi-structured data? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html
+--------------------------------------------------
+
+--- Frage Nr. 530 (Richtig) ---
+Frage: Which stages are created by default, with no need to use the CREATE STAGE command? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+DE are created by default
+https://docs.snowflake.com/en/user-guide/data-load-local-file-system-create-stage
+--------------------------------------------------
+
+--- Frage Nr. 413 (Richtig) ---
+Frage: Which statistics on a Query Profile reflect the efficiency of the query pruning? (Choose two.)
+Deine Antwort:     A, B
+Korrekte Antwort:  A, B
+
+Erklärung:
+Statistics  A major source of information provided in the detail pane is the various statistics, grouped in the following sections:   Pruning — information on the effects of table pruning:   Partitions scanned — number of partitions scanned so far.  Partitions total — total number of partitions in a given table.  https://docs.snowflake.com/en/user-guide/ui-query-profile
+--------------------------------------------------
+
+--- Frage Nr. 740 (Falsch) ---
+Frage: Which Snowflake object helps evaluate virtual warehouse performance impacted by query queuing?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+warehouse_load_history
+The user is referring to this in particular:  Query History: It keeps a record of all queries executed in your Snowflake account. This allows you to analyze the performance of individual queries, including their execution time, number of rows processed, etc. However, it does not provide specific information on the impact of query queuing on virtual warehouse performance. WAREHOUSE_LOAD_HISTORY: This system view provides specific information on the usage of the virtual warehouse, including the wait times of queries in the queue. This allows you to evaluate the impact of query queuing on virtual warehouse performance by providing data on warehouse load and usage. So, if you want to assess the impact of query queuing on virtual warehouse performance, the WAREHOUSE_LOAD_HISTORY view would be more appropriate. If you want to examine the performance of individual queries as a whole, then Query History would be more relevant
+https://docs.snowflake.com/en/user-guide/warehouses-load-monitoring
+Even C seems to be correct. But, the Query History provides more information than the Load history.  AVG_QUEUED_LOAD. Query load value for queries queued because the warehouse was overloaded. https://docs.snowflake.com/en/sql-reference/account-usage/warehouse_load_history
+--------------------------------------------------
+
+--- Frage Nr. 1186 (Richtig) ---
+Frage: What unit of storage supports efficient query processing in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D is correct
+D. Micro-partitions
+--------------------------------------------------
+
+--- Frage Nr. 373 (Richtig) ---
+Frage: How can a dropped internal stage be restored?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+From docs  https://docs.snowflake.com/en/sql-reference/sql/drop-stage#:~:text=Usage%20notes,must%20be%20recreated.
+https://docs.snowflake.com/en/sql-reference/sql/undrop You can undrop DB, SCHEMA, TABLE, also ACCOUNT and TAG
+D. Recreate the dropped stage. https://docs.snowflake.com/en/user-guide/data-time-travel#introduction-to-time-travel Using Time Travel, you can perform the following actions within a defined period of time:  Query data in the past that has since been updated or deleted.  Create clones of entire tables, schemas, and databases at or before specific points in the past.  Restore tables, schemas, and databases that have been dropped.  Doesn't look like you can restore a dropped stage using UNDROP and time travel. Looks like you just need to recreate it using your SQL definition.
+--------------------------------------------------
+
+--- Frage Nr. 876 (Richtig) ---
+Frage: When a database is cloned, which objects in the clone inherit all granted privileges from the source object? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+If the source object is a database or schema, the clone inherits all granted privileges on the clones of all child objects contained in the source object:  For databases, contained objects include schemas, tables, views, etc.  For schemas, contained objects include tables, views, etc.  Note that the clone of the container itself (database or schema) does not inherit the privileges granted on the source container.  c d
+Note that the clone of the container itself (database or schema) does not inherit the privileges granted on the source container.
+BC correct - https://docs.snowflake.com/en/user-guide/object-clone
+--------------------------------------------------
+
+--- Frage Nr. 855 (Richtig) ---
+Frage: What metadata does Snowflake store for rows in micro-partitions? (Choose two.)
+Deine Antwort:     A, B
+Korrekte Antwort:  A, B
+
+Erklärung:
+correct
+AB correct
+--------------------------------------------------
+
+--- Frage Nr. 879 (Richtig) ---
+Frage: What is the expiration period for a file URL used to access unstructured data in cloud storage?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Its says FILE URL. Only the Scope and Presigned will expire.
+correction to B - https://docs.snowflake.com/en/user-guide/unstructured-intro
+--------------------------------------------------
+
+--- Frage Nr. 894 (Richtig) ---
+Frage: In which Snowsight section can a user switch roles, modify their profile, and access documentation?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+None of them. Account Menu as of 2024-02-14 https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour#get-account-information-and-update-your-user-profile-from-the-account-menu
+A correct - https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour
+--------------------------------------------------
+
+--- Frage Nr. 394 (Richtig) ---
+Frage: Which virtual warehouse consideration can help lower compute resource credit consumption?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+A - it won't  B - it can, if your queries take a very long time to execute. However, it's more likely to increase  C - it can D - it won't
+https://docs.snowflake.com/en/user-guide/warehouses-considerations#automating-warehouse-suspension https://docs.snowflake.com/en/user-guide/warehouses-considerations#automating-warehouse-resumption
+--------------------------------------------------
+
+--- Frage Nr. 1027 (Richtig) ---
+Frage: Which of the following describes external functions in Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A correct An external function is a type of UDF. Unlike other UDFs, an external function does not contain its own code; instead, the external function calls code that is stored and executed outside Snowflake
+A https://docs.snowflake.com/en/sql-reference/external-functions-introduction.html
+--------------------------------------------------
+
+--- Frage Nr. 8 (Richtig) ---
+Frage: Account-level storage usage can be monitored via:
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct. for D it should be TABLE_STORAGE_METRICS not ACCOUNT_USAGE_METRICS. there is no view with account_usage_metrics name. if D has said view name is TABLE_STORAGE_METRICS then its correct
+https://docs.snowflake.com/en/user-guide/admin-usage-billing.html
+--------------------------------------------------
+
+--- Frage Nr. 506 (Richtig) ---
+Frage: Which solution improves the performance of point lookup queries that return a small number of rows from large tables using highly selective filters?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D  https://docs.snowflake.com/en/user-guide/search-optimization-service#:~:text=Selective%20point%20lookup%20queries%20on%20tables.%20A%20point%20lookup%20query%20returns%20only%20one%20or%20a%20small%20number%20of%20distinct%20rows.%20Use%20case%20examples%20include
+--------------------------------------------------
+
+--- Frage Nr. 806 (Richtig) ---
+Frage: What is the purpose of the Snowflake SPLIT_TO_TABLE function?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/functions/split_to_table
+https://www.bing.com/search?q=What+is+the+purpose+of+the+Snowflake+SPLIT_TO_TABLE+function%3F&qs=ds&form=QBRE
+--------------------------------------------------
+
+--- Frage Nr. 285 (Richtig) ---
+Frage: Which data type can be used to store geospatial data in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Snowflake provides the following data types for geospatial data: The GEOGRAPHY data type, which models Earth as though it were a perfect sphere. The GEOMETRY data type, which represents features in a planar (Euclidean, Cartesian) coordinate system.
+--------------------------------------------------
+
+--- Frage Nr. 1103 (Richtig) ---
+Frage: Which statement describes when a virtual warehouse can be resized?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Ours i
+A warehouse can be resized up or down at any time, including while it is running and processing statements.
+--------------------------------------------------
+
+--- Frage Nr. 305 (Richtig) ---
+Frage: Snowpark provides libraries for which programming languages? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+BC is correct.  Snowpark provide libs for Java  Python Scala https://docs.snowflake.com/en/developer-guide/snowpark/index#developer-guides
+Confirmed, BC
+--------------------------------------------------
+
+--- Frage Nr. 206 (Richtig) ---
+Frage: Which of the following are examples of operations that require a Virtual Warehouse to complete, assuming no queries have been executed previously? (Choose three.)
+Deine Antwort:     B, C, D
+Korrekte Antwort:  B, C, D
+
+Erklärung:
+B,C,D are the answers. Min uses the Global cache / Service layer cache, hence it does not require the WH to execute query. So, A can be eliminated from answers.
+--------------------------------------------------
+
+--- Frage Nr. 837 (Richtig) ---
+Frage: Which statement describes Snowflake tables?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+It's A
+A: Micropartition is physical representation of data
+--------------------------------------------------
+
+--- Frage Nr. 1080 (Richtig) ---
+Frage: In a Snowflake role hierarchy, what is the top-level role?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Answer - ACCOUNTADMIN https://docs.snowflake.com/en/user-guide/security-access-control-overview.html#
+https://docs.snowflake.com/en/user-guide/security-access-control-overview#label-role-hierarchy-and-privilege-inheritance ORGADMIN is a separate system role that manages operations at the organization level. This role is not included in the hierarchy of system roles.
+--------------------------------------------------
+
+--- Frage Nr. 624 (Richtig) ---
+Frage: Which Snowflake storage object can be used to store data beyond a single session and will not incur Fail-safe costs?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-cdp-storage-costs
+correct
+--------------------------------------------------
+
+--- Frage Nr. 875 (Richtig) ---
+Frage: Why would a Snowflake user decide to use a materialized view instead of a regular view?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A correct - https://docs.snowflake.com/en/user-guide/views-materialized
+--------------------------------------------------
+
+--- Frage Nr. 933 (Richtig) ---
+Frage: Which Snowflake table types are used to manage costs for short-lived tables? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+DE correct - https://docs.snowflake.com/en/user-guide/tables-storage-considerations
+--------------------------------------------------
+
+--- Frage Nr. 625 (Richtig) ---
+Frage: Which data sharing mechanism can be used to share data privately or publicly within the Snowflake Marketplace?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+
+--------------------------------------------------
+
+--- Frage Nr. 464 (Richtig) ---
+Frage: What is the recommended way to insert a VARIANT value into a Snowflake table?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+TO_VARIANT Cannot Be Used Directly in VALUES  The TO_VARIANT function cannot appear directly inside a VALUES clause in an INSERT; instead, you must select from it: Explicit Casting and JSON Parsing  Snowflake supports multiple ways to produce VARIANT values in the SELECT:   TO_VARIANT(<expr>) converts any SQL expression to VARIANT.  <expr>::VARIANT or CAST(<expr> AS VARIANT) for explicit casting.  PARSE_JSON('<json>') to turn a JSON string into VARIANT.   INSERT INTO to_variant_example (v_varchar, v_object)  SELECT  TO_VARIANT('Hello'),   PARSE_JSON('{"key":"value"}');
+https://docs.snowflake.com/en/sql-reference/functions/to_variant "The TO_VARIANT function cannot be used directly in an INSERT statement. Instead, use INSERT INTO ... SELECT....  Hence, ANSWER B is not correct.  As per the right answer, or A, or D. I am saying D, only because I have to select an answer. Please, see below syntax, for JSON: INSERT INTO to_variant_example (v_varchar, v_number, v_timestamp, v_array, v_object)  SELECT  TO_VARIANT('Skiing is fun!'),  TO_VARIANT(3.14),  TO_VARIANT('2024-01-25 01:02:03'),  TO_VARIANT(ARRAY_CONSTRUCT('San Mateo', 'Seattle', 'Berlin')),  PARSE_JSON(' { "key1": "value1", "key2": "value2" } ');  SELECT * FROM to_variant_example; Not very confident that this will help here.
+I have analyzed more on the info from my previous email. My answer is A.
+--------------------------------------------------
+
+--- Frage Nr. 842 (Richtig) ---
+Frage: Which command should be used to implement a masking policy that was already created in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+ALTER MASKING POLICY  ENTERPRISE EDITION FEATURE  This feature requires Enterprise Edition (or higher). To inquire about upgrading, please contact Snowflake Support. Replaces the existing masking policy rules with new rules or a new comment and allows the renaming of a masking policy.  Any changes made to the policy rules go into effect when the next SQL query that uses the masking policy runs.  See also: Masking policy DDL  Syntax  ALTER MASKING POLICY [ IF EXISTS ] <name> RENAME TO <new_name>  ALTER MASKING POLICY [ IF EXISTS ] <name> SET BODY -> <expression_on_arg_name_to_mask>  ALTER MASKING POLICY [ IF EXISTS ] <name> SET TAG <tag_name> = '<tag_value>' [ , <tag_name> = '<tag_value>' ... ]  ALTER MASKING POLICY [ IF EXISTS ] <name> UNSET TAG <tag_name> [ , <tag_name> ... ]
+D. modify column SET MASKING POLICY. APPLY MASKING is privilege that should grant to role to apply the masking policy
+-- apply masking policy to a table column  ALTER TABLE IF EXISTS user_info MODIFY COLUMN email SET MASKING POLICY email_mask;  -- apply the masking policy to a view column  ALTER VIEW user_info_v MODIFY COLUMN email SET MASKING POLICY email_mask; https://docs.snowflake.com/en/user-guide/security-column-ddm-use
+https://community.snowflake.com/s/article/Privilege-Updates-APPLY-MASKING-POLICY-APPLY-ROW-ACCESS-POLICY-Allow-DESCRIBE-object-Operation-on-Tables-and-Views-Only-2021-07-xx-Pending
+--------------------------------------------------
+
+--- Frage Nr. 866 (Richtig) ---
+Frage: What is the impact on queries that are being executed when a resource monitor set to the “Notify &amp; Suspend” threshold level is exceeded?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D is correct  Reference: https://docs.snowflake.com/en/user-guide/resource-monitors
+correct
+D correct - Notify & Suspend   Send a notification (to all account administrators with notifications enabled) and suspend all assigned warehouses after all statements being executed by the warehouse(s) have completed. Notify & Suspend Immediately   Send a notification (to all account administrators with notifications enabled) and suspend all assigned warehouses immediately, which cancels any statements being executed by the warehouses at the time.
+Correct answer is D https://docs.snowflake.com/en/user-guide/resource-monitors Notify Notify&Suspend Notify and suspend immediately where the running queries are cancelled
+--------------------------------------------------
+
+--- Frage Nr. 700 (Richtig) ---
+Frage: A Snowflake query took 40 minutes to run. The results indicate that ‘Bytes spilled to local storage’ was a large number.
+
+What is the issue and how can it be resolved?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Answer is B. warehouse size should be increased. multi cluster warehouse will just help in increasing paralelism.
+B is correct https://github.com/dbt-labs/docs.getdbt.com/discussions/1550 When you have spillage, increasing warehouse size almost always helps.
+--------------------------------------------------
+
+--- Frage Nr. 477 (Richtig) ---
+Frage: What Snowflake privilege should be granted to allow a non-ACCOUNTADMIN access to billing information?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://community.snowflake.com/s/article/Snowflake-UI-displays-all-databases-and-all-database-objects-even-without-any-privilege-granted-on-those-databases-and-its-objects "The MONITOR USAGE privilege provides the ability to monitor account-level usage and historical information for databases and warehouses. This privilege enables non-account administrators to monitor usage and billing history in the classic web interface."
+Not in English language, of course, but in it.
+--------------------------------------------------
+
+--- Frage Nr. 927 (Richtig) ---
+Frage: What role in Snowflake separates the management of users and roles from the management of all grants?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+USERADMIN
+D correct - https://medium.com/snowflake/role-based-access-control-rbac-with-secondary-roles-8ce3c7bb57df
+--------------------------------------------------
+
+--- Frage Nr. 931 (Richtig) ---
+Frage: The VALIDATE table function has which parameter as an input argument for a Snowflake user?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D correct. Job_ID which is query ID https://docs.snowflake.com/en/sql-reference/functions/validate#syntax
+D correct - https://docs.snowflake.com/en/sql-reference/functions/validate
+--------------------------------------------------
+
+--- Frage Nr. 661 (Richtig) ---
+Frage: For the ALLOWED_VALUES tag property, what is the MAXIMUM number of possible string values for a single tag?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+it's 300
+None of them As of Feb 2024, it's 300  The ALLOWED_VALUES tag property enables specifying the possible string values that can be assigned to the tag when the tag is set on an object. The maximum number of possible string values for a single tag is 300.  https://docs.snowflake.com/en/user-guide/object-tagging#label-object-tagging-specify-tag-values
+https://docs.snowflake.com/en/user-guide/object-tagging#label-object-tagging-specify-tag-values:~:text=The%20ALLOWED_VALUES%20tag%20property%20enables%20specifying%20the%20possible%20string%20values%20that%20can%20be%20assigned%20to%20the%20tag%20when%20the%20tag%20is%20set%20on%20an%20object.%20The%20maximum%20number%20of%20possible%20string%20values%20for%20a%20single%20tag%20is%2050.
+--------------------------------------------------
+
+--- Frage Nr. 436 (Richtig) ---
+Frage: When creating a virtual warehouse, what setting should be used to avoid both over-provisioning resources and auto-scaling when there is increased concurrency?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+set MAX_CLUSTER_COUNT = 1, not 10
+https://docs.snowflake.com/en/user-guide/query-acceleration-service  ENABLE_QUERY_ACCELERATION is designed to improve performance for queries that experience high concurrency or large data scans without requiring additional manual scaling of resources. This feature dynamically allocates additional resources as needed for certain queries, avoiding both over-provisioning (which wastes resources) and scaling the number of clusters.
+--------------------------------------------------
+
+--- Frage Nr. 1173 (Richtig) ---
+Frage: What is the Snowflake multi-clustering feature for virtual warehouses used for?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+c - correct
+C - correct
+C. To improve concurrency for users and queries
+--------------------------------------------------
+
+--- Frage Nr. 828 (Richtig) ---
+Frage: Which command should be used to unload all the rows from a table into one or more files in a named stage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A: Unload from Table to Named Stage : https://docs.snowflake.com/en/user-guide/data-unload-overview.
+The correct answer is A - The COPY INTO command is used to unload all the rows from a table into one or more files in a named stage in Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 113 (Richtig) ---
+Frage: True or False: Data Providers can share data with only the Data Consumer.
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+False. In Snowflake, data sharing is not limited to sharing data with only a single data consumer. Snowflake allows data providers to share data with multiple data consumers or even make data publicly accessible, depending on the configured sharing settings.  With Snowflake's secure data sharing capabilities, data providers can share specific datasets or entire databases with one or more data consumers. Data consumers can be given read-only access to the shared data, allowing them to query and analyze the data without being able to modify or change it. This flexible data sharing model enables collaboration and data exchange between different organizations or teams within an organization.  Furthermore, Snowflake also provides granular access controls and permissions, allowing data providers to define who can access their shared data and what level of access each data consumer has. This ensures data privacy and security while enabling effective data sharing and collaboration.
+https://www.kpipartners.com/blog/data-sharing-in-snowflake
+--------------------------------------------------
+
+--- Frage Nr. 835 (Richtig) ---
+Frage: Which Snowflake view is used to support compliance auditing?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+The "ACCESS_HISTORY" view in Snowflake is primarily used to support compliance auditing. This view contains information about historical access and usage patterns related to tables and views within your Snowflake account. It provides details on who accessed the data, when, and from which IP addresses, among other audit-related information.
+https://docs.snowflake.com/en/user-guide/access-history
+--------------------------------------------------
+
+--- Frage Nr. 753 (Richtig) ---
+Frage: A user needs to ingest 1 GB of data that is available in an external stage using a COPY INTO command.
+
+How can this be done with MAXIMUM performance and the LEAST cost?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-considerations-prepare
+--------------------------------------------------
+
+--- Frage Nr. 387 (Richtig) ---
+Frage: Which chart type is supported in Snowsight for Snowflake users to visualize data with dashboards?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Bar charts  Line charts  Scatterplots  Heat grids  Scorecards
+--------------------------------------------------
+
+--- Frage Nr. 237 (Richtig) ---
+Frage: Which of the following features are available with the Snowflake Enterprise edition? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+A. Database replication and failover : All Editions B. Automated index management : No index in Snowflake C. Customer managed keys (Tri-secret secure) : Business and VPS D. Extended time travel : Enterprise, Business and VPS E. Native support for geospatial data : All Editions  Answer are : A,D,E  Source : https://docs.snowflake.com/en/user-guide/intro-editions
+--------------------------------------------------
+
+--- Frage Nr. 228 (Richtig) ---
+Frage: Which Snowflake architectural layer is responsible for a query execution plan?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Cloud Services The cloud services layer is a collection of services that coordinate activities across Snowflake. These services tie together all of the different components of Snowflake in order to process user requests, from login to query dispatch. The cloud services layer also runs on compute instances provisioned by Snowflake from the cloud provider.  Services managed in this layer include:  Authentication  Infrastructure management  Metadata management  Query parsing and optimization  Access control
+https://docs.snowflake.com/en/user-guide/intro-key-concepts.html#query-processing
+--------------------------------------------------
+
+--- Frage Nr. 567 (Richtig) ---
+Frage: What objects can be cloned within Snowflake? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/object-clone#cloning-and-stages
+CREATE <object> … CLONE Creates a copy of an existing object in the system. This command is primarily used for creating zero-copy clones of databases, schemas, and tables; however, it can also be used to quickly/easily create clones of other schema objects , such as external stages, file formats, and sequences, and database roles.  https://docs.snowflake.com/en/user-guide/object-clone
+--------------------------------------------------
+
+--- Frage Nr. 160 (Richtig) ---
+Frage: In the Snowflake access control model, which entity owns an object by default?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+To own an object means that a role has the OWNERSHIP privilege on the object. Each securable object is owned by a single role, which by default is the role used to create the object.
+--------------------------------------------------
+
+--- Frage Nr. 288 (Richtig) ---
+Frage: What actions are supported by Snowflake resource monitors? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  A, C
+
+Erklärung:
+B&C https://docs.snowflake.com/en/user-guide/resource-monitors.html#actions Notify & Suspend Notify & Suspend Immediately Notify
+--------------------------------------------------
+
+--- Frage Nr. 275 (Richtig) ---
+Frage: Which is the MINIMUM required Snowflake edition that a user must have if they want to use AWS/Azure Privatelink or Google Cloud Private Service Connect?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Private connectivity to the Snowflake service requires Business Critical (or higher). https://docs.snowflake.com/en/user-guide/private-snowflake-service.html#private-connectivity-to-the-snowflake-service
+--------------------------------------------------
+
+--- Frage Nr. 564 (Richtig) ---
+Frage: In Snowflake's data security framework, how does column-level security contribute to the protection of sensitive information? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+Agree with DE
+--------------------------------------------------
+
+--- Frage Nr. 491 (Richtig) ---
+Frage: What Snowflake feature provides a data hub for secure data collaboration, with a selected group of invited members?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Data Exchange provides a data hub for securely collaborating around data with a selected group of members that you invite.
+C  https://docs.snowflake.com/en/user-guide/data-exchange
+--------------------------------------------------
+

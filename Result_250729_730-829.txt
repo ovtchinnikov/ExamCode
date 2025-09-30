@@ -1,0 +1,1190 @@
+==================================================
+### Prüfungsprotokoll ###
+Datum: 29.07.2025, 15:05:04 Uhr
+Modus: Practice
+Auswahl: Sorted (100 Fragen)
+
+--- Endergebnis ---
+Punkte: 62 von 100
+Erfolgsquote: 62.00%
+==================================================
+
+--- Frage Nr. 730 (Richtig) ---
+Frage: Which columns are available in the output of a Snowflake directory table? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+acc. to https://docs.snowflake.com/en/user-guide/data-load-dirtables-query
+Hi. Can you paste the link where you saw the FILE_NAME? wanted to ensure if its in older version of Snowflake. https://docs.snowflake.com/en/user-guide/data-load-dirtables-manage#output clearly mentions the columns.
+--------------------------------------------------
+
+--- Frage Nr. 731 (Richtig) ---
+Frage: What is used to diagnose and troubleshoot network connections to Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+SnowCD (i.e. Snowflake Connectivity Diagnostic Tool) helps users to diagnose and troubleshoot their network connection to Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 732 (Richtig) ---
+Frage: What Snowflake object records Data Manipulation Language (DML) changes so that actions can be taken using the changed data?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct
+for sure "Stream"
+--------------------------------------------------
+
+--- Frage Nr. 733 (Richtig) ---
+Frage: By default, the COPY INTO [location] statement will separate table data into a set of output files to take advantage of which Snowflake feature?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct
+C:  By default, the COPY INTO statement will separate table data into a set of output files to take advantage of Snowflake's parallel processing feature. This means that when data is unloaded, it can be split into multiple files and each file can be processed simultaneously by different nodes in the cluster, improving performance. The number of output files can be controlled by specifying the number of file parts in the COPY INTO statement.
+--------------------------------------------------
+
+--- Frage Nr. 734 (Falsch) ---
+Frage: Which command can be used to view the allowed and blocked IP list of a network policy?
+Deine Antwort:     D
+Korrekte Antwort:  C
+
+Erklärung:
+. DESCRIBE NETWORK POLICY is correct DESC NETWORK POLICY mypolicy;  -----------------+---------------+  name | value | -----------------+---------------+  ALLOWED_IP_LIST | 192.168.0.100 |  BLOCKED_IP_LIST | 192.168.0.101 | -----------------+---------------+
+--------------------------------------------------
+
+--- Frage Nr. 735 (Falsch) ---
+Frage: Which file functions are non-deterministic? (Choose two.)
+Deine Antwort:     C, E
+Korrekte Antwort:  A, D
+
+Erklärung:
+AD BUILD_SCOPED_FILE_URL encodes the URL. GET_PRESIGNED_URL adds credentials to the URL. These are both non-deterministic.
+correct answer - BD https://docs.snowflake.com/en/sql-reference/functions-file GET_PRESIGNED_URL and BUILD_SCOPED_FILE_URL are non-deterministic functions; the others are deterministic.
+--------------------------------------------------
+
+--- Frage Nr. 736 (Richtig) ---
+Frage: How can a Snowflake user optimize query performance in Snowflake? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+The correct answers are B and C.  Clustering a table physically reorders the rows in a table to improve the performance of queries that filter on specific columns. The search optimization service creates a search index for a table, which can be used to improve the performance of queries that filter on specific columns.  Creating a view does not improve query performance. Enabling Time Travel allows you to query data from a specific point in time, but it does not improve query performance. Indexing a table creates an index that can be used to improve the performance of queries, but it is not as effective as clustering or the search optimization service.
+--------------------------------------------------
+
+--- Frage Nr. 737 (Falsch) ---
+Frage: What is the MINIMUM role required to set the value for the parameter ENABLE_ACCOUNT_DATABASE_REPLICATION?
+Deine Antwort:     A
+Korrekte Antwort:  D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/account-replication-config#label-enabling-accounts-for-replication To enable replication for accounts, a user with the ORGADMIN role uses the SYSTEM$GLOBAL_ACCOUNT_SET_PARAMETER function to set the ENABLE_ACCOUNT_DATABASE_REPLICATION parameter to true. Note that multiple accounts in an organization can be enabled for replication from the same ORGADMIN account.
+its ORG AdMIN
+The organization administrator (ORGADMIN role) must enable replication for the source and target accounts before replicating a database  https://docs.snowflake.com/en/user-guide/database-replication-config#
+--------------------------------------------------
+
+--- Frage Nr. 738 (Falsch) ---
+Frage: Which file format will keep floating-point numbers from being truncated when data is unloaded?
+Deine Antwort:     A
+Korrekte Antwort:  D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-unload-considerations#floating-point-numbers-truncated The values are not truncated when unloading floating-point number columns to Parquet files.
+https://community.snowflake.com/s/article/Data-precision-loss-with-Double-Float-REAL-Snowflake-Data-type-with-unloading
+--------------------------------------------------
+
+--- Frage Nr. 739 (Richtig) ---
+Frage: A user has semi-structured data to load into Snowflake but is not sure what types of operations will need to be performed on the data.
+
+Based on this situation, what type of column does Snowflake recommend be used?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Correct because its key value pair
+--------------------------------------------------
+
+--- Frage Nr. 740 (Falsch) ---
+Frage: Which Snowflake object helps evaluate virtual warehouse performance impacted by query queuing?
+Deine Antwort:     A
+Korrekte Antwort:  B
+
+Erklärung:
+A. Resource monitor: Resource monitors are primarily used to track and control credit consumption for warehouses. While they can notify about high usage, they do not provide detailed historical data on query queuing.
+
+B. Account_usage.query_history: This view provides a comprehensive history of all queries executed in the account. It includes columns such as QUEUED_OVERLOAD_TIME and QUEUED_REPAIR_TIME, which directly indicate how much time individual queries spent waiting in a queue. This is very useful for analyzing the impact of queuing on specific queries.
+
+C. Information_schema.warehouse_load_history: This view provides a historical record of the load on a specific virtual warehouse. It includes metrics like QUEUED_LOAD (the average number of queued queries for the warehouse over a given time interval), RUNNING_LOAD, and BLOCKED_LOAD. This view is specifically designed to assess the overall performance and queuing behavior of the warehouse itself.
+
+D. Information_schema.warehouse_metering_history: This view provides historical data on the credit consumption of warehouses. While related to cost and usage, it does not directly show metrics related to query queuing.
+
+Both ACCOUNT_USAGE.QUERY_HISTORY and INFORMATION_SCHEMA.WAREHOUSE_LOAD_HISTORY are valuable for understanding query queuing. However, if the focus is on evaluating virtual warehouse performance impacted by query queuing, INFORMATION_SCHEMA.WAREHOUSE_LOAD_HISTORY provides direct metrics about the warehouse's queue load over time, making it a very direct source for this specific evaluation. ACCOUNT_USAGE.QUERY_HISTORY tells you which individual queries were affected by queuing.
+
+Given the phrasing, INFORMATION_SCHEMA.WAREHOUSE_LOAD_HISTORY is the most direct answer as it provides load metrics for the warehouse itself, including queued queries.
+
+The final answer is C
+--------------------------------------------------
+
+--- Frage Nr. 741 (Falsch) ---
+Frage: Which Snowflake object can be created to be temporary?
+Deine Antwort:     A
+Korrekte Antwort:  B
+
+Erklärung:
+The stage can be created to be temporary by adding a TEMP parameter. CREATE TEMP STAGE
+https://www.bing.com/search?q=snowflake+temporary+stage&cvid=998cb1d21c5d48bdb3a7dae1885e147f&aqs=edge.2.0j69i57j0l7j69i11004.11917j0j4&FORM=ANAB01&PC=U531
+--------------------------------------------------
+
+--- Frage Nr. 742 (Falsch) ---
+Frage: Which stream type can be used for tracking the records in external tables?
+Deine Antwort:     D
+Korrekte Antwort:  C
+
+Erklärung:
+C. Insert-only : Supported for streams on external tables only.  https://docs.snowflake.com/en/user-guide/streams-intro
+Insert-only: Supported for streams on external tables only.   https://docs.snowflake.com/en/user-guide/streams-intro
+--------------------------------------------------
+
+--- Frage Nr. 743 (Falsch) ---
+Frage: What is the recommended approach for unloading data to a cloud storage location from Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  B
+
+Erklärung:
+B. Unload the data directly to the cloud storage location, which is an External Stage.
+This tricky the precise answer is unload to an external stage in the cloud first.
+--------------------------------------------------
+
+--- Frage Nr. 744 (Richtig) ---
+Frage: Which command is used to unload files from an internal or external stage to a local file system?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B. GET: https://docs.snowflake.com/en/user-guide/data-unload-snowflake.  Table -> Copy into -> Stage -> Get -> Local File System
+If I had to choose, I would choose B. COPY INTO - is used to unload data into either internal or external stage, then we use GET to download files from INTERNAL stage into local system, or we use tools provided by external provider to download files.  "Bulk unloading process The process for unloading data into files is the same as the loading process, except in reverse: Step 1 Use the COPY INTO <location> command to copy the data from the Snowflake database table into one or more files in a Snowflake or external stage. Step 2 Download the file from the stage:  From a Snowflake stage, use the GET command to download the data file(s).  From S3, use the interfaces/tools provided by Amazon S3 to get the data file(s).  From Azure, use the interfaces/tools provided by Microsoft Azure to get the data file(s)." https://docs.snowflake.com/en/user-guide/data-unload-overview  ChatGPT says you can download files from external stage through SnowSQL by using GET command.
+--------------------------------------------------
+
+--- Frage Nr. 745 (Falsch) ---
+Frage: A tabular User-Defined Function (UDF) is defined by specifying a return clause that contains which keyword?
+Deine Antwort:     D
+Korrekte Antwort:  B
+
+Erklärung:
+CREATE FUNCTION t()  RETURNS TABLE(msg VARCHAR)  AS  $$  SELECT 'Hello'  UNION  SELECT 'World'  $$;
+B https://docs.snowflake.com/en/developer-guide/udf/sql/udf-sql-tabular-functions
+--------------------------------------------------
+
+--- Frage Nr. 746 (Richtig) ---
+Frage: Which SQL statement will require a virtual warehouse to run?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+A warehouse provides the required resources, such as CPU, memory, and temporary storage, to perform the following operations in a Snowflake session:   Executing SQL SELECT statements that require compute resources (e.g. retrieving rows from tables and views).   Performing DML operations, such as:   Updating rows in tables (DELETE , INSERT , UPDATE).   Loading data into tables (COPY INTO <table>).   Unloading data from tables (COPY INTO <location>).
+--------------------------------------------------
+
+--- Frage Nr. 747 (Richtig) ---
+Frage: Which REST API can be used with unstructured data?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-unstructured-rest-api
+The insertFiles API can be used to upload and insert unstructured data files into Snowflake. This is typically used for loading various types of unstructured data, such as JSON, XML, CSV, and more, into Snowflake for further processing or analysis.
+--------------------------------------------------
+
+--- Frage Nr. 748 (Richtig) ---
+Frage: Which query contains a Snowflake hosted file URL in a directory table for a stage named bronzestage?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Querying directory tables This topic covers how to query a directory table to retrieve a list of all files on a stage with metadata, such as the Snowflake file URL, for each file. SELECT * FROM DIRECTORY( @<stage_name> )  https://docs.snowflake.com/en/user-guide/data-load-dirtables-query
+FILE_URL -Snowflake-hosted file URL to the file.  https://docs.snowflake.com/en/user-guide/data-load-dirtables-manage
+--------------------------------------------------
+
+--- Frage Nr. 749 (Richtig) ---
+Frage: Which feature is integrated to support Multi-Factor Authentication (MFA) at Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+correct
+--------------------------------------------------
+
+--- Frage Nr. 750 (Richtig) ---
+Frage: In which Snowflake layer does Snowflake reorganize data into its internal optimized, compressed, columnar format?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Database storage layer
+correct
+--------------------------------------------------
+
+--- Frage Nr. 751 (Falsch) ---
+Frage: When can user session variables be accessed in a Snowflake scripting procedure?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+A. When the procedure is defined as STRICT.
+
+STRICT is a property that determines how the procedure handles NULL values in expressions. It has no relation to accessing session variables.
+
+B. When the procedure is defined to execute as CALLER.
+
+This is correct. When a stored procedure is defined with EXECUTE AS CALLER, it runs with the privileges of the role that calls the procedure. More importantly for this question, it also inherits the session context of the caller. This means it can directly access and even modify any session variables (SET <variable> = <value>) that were set in the caller's session.
+
+C. When the procedure is defined to execute as OWNER.
+
+When a stored procedure is defined with EXECUTE AS OWNER, it runs with the privileges of the role that owns the procedure (i.e., the role that created it). It executes in its own independent session context, separate from the caller's session. Therefore, it cannot directly access user session variables from the caller's session.
+
+D. When the procedure is defined with an argument that has the same name and type as the session variable.
+
+This describes how to pass the value of a session variable into a procedure as an argument. The procedure would then access the argument, not directly the session variable itself from the global session context. The question asks about accessing the session variable, implying the procedure can directly read it from the session, which only happens with EXECUTE AS CALLER.
+
+The final answer is B
+--------------------------------------------------
+
+--- Frage Nr. 752 (Richtig) ---
+Frage: What computer language can be selected when creating User-Defined Functions (UDFs) using the Snowpark API?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Snowpark API supports: Python, Scala and Java
+C Python Snowpark API supports: Python, Scala and Java
+https://docs.snowflake.com/en/developer-guide/snowpark/index
+Java, Python, Scala https://docs.snowflake.com/en/developer-guide/snowpark/index
+--------------------------------------------------
+
+--- Frage Nr. 753 (Richtig) ---
+Frage: A user needs to ingest 1 GB of data that is available in an external stage using a COPY INTO command.
+
+How can this be done with MAXIMUM performance and the LEAST cost?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-considerations-prepare
+--------------------------------------------------
+
+--- Frage Nr. 754 (Richtig) ---
+Frage: A Snowflake user has two tables that contain numeric values and is trying to find out which values are present in both tables.
+
+Which set operator should be used?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/operators-query INTERSECT Returns rows from one query’s result set which also appear in another query’s result set, with duplicate elimination.
+Correct
+--------------------------------------------------
+
+--- Frage Nr. 755 (Richtig) ---
+Frage: A view is defined on a permanent table. A temporary table with the same name is created in the same schema as the referenced table.
+
+What will the query from the view return?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Similar to the other table types (transient and permanent), temporary tables belong to a specified database and schema; however, because they are session-based, they aren’t bound by the same uniqueness requirements. This means you can create temporary and non-temporary tables with the same name within the same schema. However, note that the temporary table takes precedence in the session over any other table with the same name in the same schema.   https://docs.snowflake.com/en/user-guide/tables-temp-transient
+Changing my answer to A - According to the documentation, when a view is defined on a permanent table, it continues to reference the permanent table even if a temporary table with the same name is created in the same schema. The view will not be affected by the temporary table.
+--------------------------------------------------
+
+--- Frage Nr. 756 (Falsch) ---
+Frage: Which file function generates a Snowflake-hosted file URL to a staged file using the stage name and relative file path as inputs?
+Deine Antwort:     C
+Korrekte Antwort:  A
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/functions/build_stage_file_url
+--------------------------------------------------
+
+--- Frage Nr. 757 (Richtig) ---
+Frage: Which service or feature in Snowflake is used to improve the performance of certain types of lookup and analytical queries that use an extensive set of WHERE conditions?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct
+https://www.snowflake.com/blog/now-generally-available-snowflakes-search-optimization-service-accelerates-queries-dramatically/
+--------------------------------------------------
+
+--- Frage Nr. 758 (Richtig) ---
+Frage: What is the name of the SnowSQL file that can store connection information?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/snowsql-config#connection-parameters-section In the [connections] section of the config file, optionally set the default connection parameters for SnowSQL, e.g. account identifier, user login credentials, and the default database and warehouse. You can also define named connections to make multiple simultaneous connections to Snowflake or store different sets of connection configurations. For more information, see Connecting through SnowSQL. https://docs.snowflake.com/en/user-guide/snowsql-start
+B: https://docs.snowflake.com/en/user-guide/snowsql-config  B and C?  When SnowSQL starts, it loads configuration parameter values from the following configuration file locations in order, overriding values from files loaded previously:   /etc/snowsql.cnf   /etc/snowflake/snowsql.cnf   /usr/local/etc/snowsql.cnf   <HOME_DIR>/.snowsql.cnf (supported only for backward compatibility)   <HOME_DIR>/.snowsql/config
+https://www.bing.com/search?q=snowsql+config+file&cvid=2892d844f70d4eea84d1269a1f7e9668&aqs=edge.2.69i59j69i57j0l2j69i58j69i11004.17557j0j4&FORM=ANAB01&PC=U531
+--------------------------------------------------
+
+--- Frage Nr. 759 (Richtig) ---
+Frage: How do secure views compare to non-secure views in Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/views-secure#:~:text=Secure%20views%20can%20execute%20more%20slowly%20than%20non%2Dsecure%20views.
+correct
+--------------------------------------------------
+
+--- Frage Nr. 760 (Richtig) ---
+Frage: Which type of join will list all rows in the specified table, even if those rows have no match in the other table?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+In some way CROSS JOIN also lists all rows.
+correct
+--------------------------------------------------
+
+--- Frage Nr. 761 (Falsch) ---
+Frage: When unloading data to an external stage, what is the MAXIMUM file size supported?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+By default, COPY INTO location statements separate table data into a set of output files to take advantage of parallel operations. The maximum size for each file is set using the MAX_FILE_SIZE copy option. The default value is 16777216 (16 MB) but can be increased to accommodate larger files. The maximum file size supported is 5 GB for Amazon S3, Google Cloud Storage, or Microsoft Azure stages. https://docs.snowflake.com/en/user-guide/data-unload-considerations#
+https://docs.snowflake.com/en/user-guide/data-unload-considerations
+--------------------------------------------------
+
+--- Frage Nr. 762 (Richtig) ---
+Frage: How long does Snowflake retain information in the ACCESS_HISTORY view?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+ACCESS_HISTORY in Enterprise Edition (or higher) is retained for 1 year. https://docs.snowflake.com/en/sql-reference/account-usage
+https://docs.snowflake.com/en/sql-reference/account-usage
+https://www.bing.com/search?q=How+long+does+Snowflake+retain+information+in+the+ACCESS_HISTORY+view&qs=n&form=QBRE&sp=-1&lq=1&pq=how+long+does+snowflake+retain+information+in+the+access_history+view&sc=1-69&sk=&cvid=82C471FF83A54A3388BF99DDF50BE969&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 763 (Richtig) ---
+Frage: Which encryption type will enable client-side encryption for a directory table?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+SNowflake_full for client and snowflake_sse for server side
+https://suya-huang.medium.com/snowflakes-client-side-encryption-and-server-side-encryption-4c7a83427010
+--------------------------------------------------
+
+--- Frage Nr. 764 (Falsch) ---
+Frage: If file format options are specified in multiple locations, the load operation selects which option FIRST to apply in order of precedence?
+Deine Antwort:     C
+Korrekte Antwort:  D
+
+Erklärung:
+D - no doubts
+correct
+https://docs.snowflake.com/en/user-guide/data-load-prepare
+--------------------------------------------------
+
+--- Frage Nr. 765 (Richtig) ---
+Frage: A complex SQL query involving eight tables with joins is taking a while to execute. The Query Profile shows that all partitions are being scanned.
+
+What is causing the query performance issue?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+correct
+I think the answer is C.  https://docs.snowflake.com/en/user-guide/ui-query-profile#exploding-joins
+--------------------------------------------------
+
+--- Frage Nr. 766 (Richtig) ---
+Frage: What does Snowflake's search optimization service support?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D. Casts on table columns (except for fixed-point numbers cast to strings): This statement is correct. The Search Optimization Service can accelerate queries where predicates involve casting a column to a different data type, with one specific exception: it does not support cases where a fixed-point number (e.g., NUMBER, DECIMAL, INT) is cast to a string type.
+--------------------------------------------------
+
+--- Frage Nr. 767 (Richtig) ---
+Frage: Which table type is no longer available after the close of the session and therefore has no Fail-safe or Time Travel recovery option?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C correct
+--------------------------------------------------
+
+--- Frage Nr. 768 (Falsch) ---
+Frage: How many network policies can be assigned to an account or specific user at a time?
+Deine Antwort:     D
+Korrekte Antwort:  A
+
+Erklärung:
+You can create multiple network policies, however only one network policy can be associated with an account at any one time. https://docs.snowflake.com/en/user-guide/network-policies
+https://docs.snowflake.com/en/user-guide/network-policies
+--------------------------------------------------
+
+--- Frage Nr. 769 (Richtig) ---
+Frage: What is a characteristic of a tag associated with a masking policy?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/tag-based-masking-policies
+The tag can support one masking policy for each data type that Snowflake supports.  https://docs.snowflake.com/en/user-guide/tag-based-masking-policies#overview
+--------------------------------------------------
+
+--- Frage Nr. 770 (Falsch) ---
+Frage: Which clients does Snowflake support Multi-Factor Authentication (MFA) token caching for? (Choose two.)
+Deine Antwort:     C, E
+Korrekte Antwort:  C, D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/security-mfa ODBC driver version 2.23.0 (or later).  JDBC driver version 3.12.16 (or later).  Python Connector for Snowflake version 2.3.7 (or later).
+C&D are correct ODBC and Python https://docs.snowflake.com/en/user-guide/security-mfa
+--------------------------------------------------
+
+--- Frage Nr. 771 (Richtig) ---
+Frage: What is the Snowflake recommended Parquet file size when querying from external tables to optimize the number of parallel scanning operations?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D To optimize the number of parallel scanning operations when querying external tables, we recommend the following file or row group sizes per format: Parquet files 256 - 512 MB
+https://docs.snowflake.com/en/user-guide/tables-external-intro.
+Answer is D: https://docs.snowflake.com/en/user-guide/tables-external-intro. "Parquet Files, Recommended Size Range: 256-512MB"
+--------------------------------------------------
+
+--- Frage Nr. 772 (Richtig) ---
+Frage: Which data types can be used in a Snowflake table that holds semi-structured data? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+Correct answer
+https://docs.snowflake.com/en/user-guide/semistructured-intro
+--------------------------------------------------
+
+--- Frage Nr. 773 (Falsch) ---
+Frage: Which constraint is enforced in Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+In Snowflake, most constraints (PRIMARY KEY, UNIQUE KEY, FOREIGN KEY) are primarily for informational purposes only. This means Snowflake stores the constraint definition but does not actively enforce it by preventing data from being inserted or updated in a way that would violate the constraint. They are useful for client tools, ETL processes, and query optimization by providing metadata.
+
+However, there is one key exception:
+
+B. NOT NULL: The NOT NULL constraint IS enforced in Snowflake. If a column is defined with NOT NULL, Snowflake will prevent any attempts to insert or update a row with a NULL value in that column.
+
+--------------------------------------------------
+
+--- Frage Nr. 774 (Richtig) ---
+Frage: Which pages are included in the Activity area of Snowsight? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+Pages included in Activity Area of Snowsight Query History Copy History Task History Dynamic Tables
+C&D are correct  https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour
+--------------------------------------------------
+
+--- Frage Nr. 775 (Falsch) ---
+Frage: When should a user consider disabling auto-suspend for a virtual warehouse? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+confirmed https://www.bing.com/search?q=When+should+a+user+consider+disabling+auto-suspend+for+a+virtual+warehouse%3F&cvid=23aca38a3cde4a21b08a926f8a3e6398&aqs=edge..69i57j69i11004.2238j0j9&FORM=ANAB01&PC=U531
+Makes sense
+--------------------------------------------------
+
+--- Frage Nr. 776 (Richtig) ---
+Frage: What can a Snowflake user do in the Activity section in Snowsight?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+https://www.bing.com/search?q=What+can+a+Snowflake+user+do+in+the+Activity+section+in+Snowsight%3F&cvid=619f477cfe384ad682420085ded0ec51&aqs=edge..69i57j69i11004.1597j0j9&FORM=ANAB01&PC=U531
+https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour
+D is correct https://docs.snowflake.com/en/user-guide/ui-snowsight-quick-tour
+--------------------------------------------------
+
+--- Frage Nr. 777 (Falsch) ---
+Frage: How does Snowflake reorganize data when it is loaded? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  B, C
+
+Erklärung:
+When data is loaded into Snowflake, Snowflake reorganizes that data into its internal optimized, compressed, columnar format. Snowflake stores this optimized data in cloud storage.
+correct
+https://docs.snowflake.com/en/user-guide/intro-key-concepts#database-storage
+--------------------------------------------------
+
+--- Frage Nr. 778 (Falsch) ---
+Frage: Which operations are handled in the Cloud Services layer of Snowflake? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  A, E
+
+Erklärung:
+A. Security: Yes, security (authentication, access control) is a core function of the Cloud Services layer.
+
+B. Data storage: No, data storage is handled by the dedicated Database Storage Layer.
+
+C. Data visualization: No, data visualization is typically performed by external Business Intelligence (BI) tools that connect to Snowflake. It's not a function of Snowflake's architectural layers.
+
+D. Query computation: No, query computation (the actual execution of queries, joins, aggregations) is handled by the Query Processing Layer (Virtual Warehouses).
+
+E. Metadata management: Yes, managing all the metadata within Snowflake is a fundamental responsibility of the Cloud Services layer.
+
+Therefore, the two operations handled in the Cloud Services layer are Security and Metadata Management.
+
+The final answer is  
+A,E
+​
+--------------------------------------------------
+
+--- Frage Nr. 779 (Falsch) ---
+Frage: What type of columns does Snowflake recommend to be used as clustering keys? (Choose two.)
+Deine Antwort:     C, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+correct
+https://docs.snowflake.com/en/user-guide/tables-clustering-keys
+--------------------------------------------------
+
+--- Frage Nr. 780 (Richtig) ---
+Frage: Which objects together comprise a namespace in Snowflake? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+correct
+https://docs.snowflake.com/en/sql-reference/ddl-database
+--------------------------------------------------
+
+--- Frage Nr. 781 (Richtig) ---
+Frage: What statistical information in a Query Profile indicates that the query is too large to fit in memory? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+https://www.bing.com/search?q=bytes+spilled+to+local+storage+snowflake&cvid=e844f19876134a32bab1cd2c43995f87&aqs=edge.2.0j69i57j0l7j69i11004.7813j0j9&FORM=ANAB01&PC=U531
+https://docs.snowflake.com/en/user-guide/ui-query-profile
+--------------------------------------------------
+
+--- Frage Nr. 782 (Falsch) ---
+Frage: How do Snowflake data providers share data that resides in different databases?
+Deine Antwort:     A
+Korrekte Antwort:  B
+
+Erklärung:
+Snowflake data providers can share data that resides in different databases by using secure views. A secure view can reference objects such as schemas, tables, and other views from one or more databases, as long as these databases belong to the same account.
+https://docs.snowflake.com/en/user-guide/data-sharing-mutiple-db
+--------------------------------------------------
+
+--- Frage Nr. 783 (Richtig) ---
+Frage: What operations can be performed while loading a simple CSV file into a Snowflake table using the COPY INTO command? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+https://www.bing.com/search?q=What+operations+can+be+performed+while+loading+a+simple+CSV+file+into+a+Snowflake+table+using+the+COPY+INTO+command%3F&cvid=a3217f4a0efc47a08668464ee418e9bb&aqs=edge..69i57j69i11004.2008j0j9&FORM=ANAB01&PC=U531
+https://docs.snowflake.com/en/user-guide/data-load-transform
+--------------------------------------------------
+
+--- Frage Nr. 784 (Falsch) ---
+Frage: Which commands support a multiple-statement request to access and update Snowflake data? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  B, E
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/transactions#explicit-transactions
+Why not A. we can write multiple statements in a stored procedure.
+--------------------------------------------------
+
+--- Frage Nr. 785 (Richtig) ---
+Frage: Why should a Snowflake user implement a secure view? (Choose two.)
+Deine Antwort:     C, E
+Korrekte Antwort:  C, E
+
+Erklärung:
+Views should be defined as secure when they are specifically designated for data privacy (i.e. to limit access to sensitive data that should not be exposed to all users of the underlying table(s)). The definition of a secure view is only exposed to authorized users (i.e. users who have been granted the role that owns the view). https://docs.snowflake.com/en/user-guide/views-secure
+Commit
+https://docs.snowflake.com/en/user-guide/views-secure
+--------------------------------------------------
+
+--- Frage Nr. 786 (Falsch) ---
+Frage: At what levels can a resource monitor be configured? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  A, E
+
+Erklärung:
+An account monitor monitors the credit usage of all the warehouses in the account. An account can only have one account monitor.  A warehouse monitor monitors the credit usage of the warehouses assigned to the resource monitor. An account can have multiple warehouse monitors.
+https://docs.snowflake.com/en/user-guide/resource-monitors
+--------------------------------------------------
+
+--- Frage Nr. 787 (Richtig) ---
+Frage: What activities can be monitored by a user directly from Snowsight's Activity tab without using the Account_Usage views? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+Correct
+https://docs.snowflake.com/en/user-guide/ui-snowsight-activity
+--------------------------------------------------
+
+--- Frage Nr. 788 (Richtig) ---
+Frage: What can a Snowflake user do with the information included in the details section of a Query Profile?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Correct
+https://docs.snowflake.com/en/user-guide/ui-query-profile#query-operator-details
+--------------------------------------------------
+
+--- Frage Nr. 789 (Falsch) ---
+Frage: Which term is used to describe information about disk usage for operations where intermediate results cannot be accommodated in a Snowflake virtual warehouse memory?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+correct
+--------------------------------------------------
+
+--- Frage Nr. 790 (Falsch) ---
+Frage: There are two Snowflake accounts in the same cloud provider region: one is production and the other is non-production.
+
+How can data be easily transferred from the production account to the non-production account?
+Deine Antwort:     A
+Korrekte Antwort:  B
+
+Erklärung:
+Can't clone data across accounts
+Cannot clone across accounts, hence B
+--------------------------------------------------
+
+--- Frage Nr. 791 (Richtig) ---
+Frage: A user is unloading data to a stage using this command:
+
+copy into @message from (select object_construct('id', 1, 'first_name', 'Snowflake', 'last_name', 'User', 'city', 'Bozeman')) file_format = (type = json)
+
+What will the output file in the stage be?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+You can use the OBJECT_CONSTRUCT function combined with the COPY command to convert the rows in a relational table to a single VARIANT column and unload the rows into a file.
+https://docs.snowflake.com/en/user-guide/data-unload-considerations#:~:text=You%20can%20use%20the%20OBJECT_CONSTRUCT%20function%20combined%20with%20the%20COPY%20command%20to%20convert%20the%20rows%20in%20a%20relational%20table%20to%20a%20single%20VARIANT%20column%20and%20unload%20the%20rows%20into%20a%20file.
+--------------------------------------------------
+
+--- Frage Nr. 792 (Richtig) ---
+Frage: A JSON file that contains lots of dates and arrays needs to be processed in Snowflake. The user wants to ensure optimal performance while querying the data.
+
+How can this be achieved?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A. Flatten the data and store it in structured data types in a flattened table. Query the table.
+
+Recommendation: Highly Recommended for Optimal Performance.
+
+Reasoning: Snowflake's query engine is highly optimized for querying structured data stored in its internal, columnar format. By flattening the JSON data, extracting nested fields (including dates and array elements) into separate, strongly-typed columns (e.g., DATE, TIMESTAMP, ARRAY, VARCHAR, NUMBER), you allow Snowflake to:
+
+Apply highly efficient compression algorithms.
+
+Perform effective micro-partition pruning, significantly reducing the amount of data scanned.
+
+Utilize native SQL operations on specific data types (e.g., date functions on DATE columns), which are much faster than parsing and manipulating JSON strings within a VARIANT column.
+
+Benefit from automatic clustering and query optimization features designed for structured data.
+
+While this requires an initial ETL (Extract, Transform, Load) step to flatten the data, the long-term query performance benefits for analytical workloads are substantial.
+--------------------------------------------------
+
+--- Frage Nr. 793 (Falsch) ---
+Frage: When referring to User-Defined Function (UDF) names in Snowflake, what does the term overloading mean?
+Deine Antwort:     A
+Korrekte Antwort:  C
+
+Erklärung:
+Overloading procedures and functions Snowflake supports overloading procedures and functions. In a given schema, you can define multiple procedures or functions that have the same name but different signatures. The signatures must differ by the number of arguments, the types of the arguments, or both. https://docs.snowflake.com/en/developer-guide/udf-stored-procedure-naming-conventions#overloading-procedures-and-functions
+https://www.bing.com/search?q=When+referring+to+User-Defined+Function+%28UDF%29+names+in+Snowflake%2C+what+does+the+term+overloading+mean%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=when+referring+to+user-defined+function+%28udf%29+names+in+snowflake%2C+what+does+the+term+overloading+mean%3F&sc=1-102&sk=&cvid=9657B73889BB4C33A673D15B5035044C&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 794 (Falsch) ---
+Frage: Which key governance feature in Snowflake allows users to identify data objects that contain sensitive data and their related objects?
+Deine Antwort:     D
+Korrekte Antwort:  B
+
+Erklärung:
+Data classification in Snowflake is a feature that allows users to automatically identify and classify columns in their tables containing personal or sensitive data.
+https://www.bing.com/search?q=Which+key+governance+feature+in+Snowflake+allows+users+to+identify+data+objects+that+contain+sensitive+data+and+their+related+objects%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=which+key+governance+feature+in+snowflake+allows+users+to+identify+data+objects+that+contain+sensitive+data+and+their+related+objects%3F&sc=1-134&sk=&cvid=8B493761844044C48A2C50322DCC8F24&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 795 (Falsch) ---
+Frage: What can a Snowflake user do in the Admin area of Snow right?
+Deine Antwort:     A
+Korrekte Antwort:  D
+
+Erklärung:
+A. Analyze query performance.
+
+Correct. The Admin area provides access to critical monitoring tools like Query History, Warehouse Load History, and Resource Monitors. Administrators use these features to understand how queries are performing, identify bottlenecks, monitor warehouse usage, and troubleshoot performance issues.
+
+B. Write queries and execute them.
+
+Incorrect as a primary function. While an administrator can write and execute queries within Snowsight (in the Worksheets section), this functionality is available to all users with appropriate permissions and is not unique or defining for the "Admin" area itself. The Admin area's focus is on management and monitoring, not general query development.
+
+C. Provide an overview of the listings in the Snowflake Marketplace.
+
+
+
+Incorrect. The Snowflake Marketplace has its own dedicated section in Snowsight, separate from the general Admin area. While administrators might be involved in enabling or managing listings obtained from the Marketplace, the Admin area doesn't provide an overview of the Marketplace's content.
+
+D. Connect to Snowflake partners to explore extended functionality.
+
+Incorrect. Connecting to Snowflake partners (e.g., via Partner Connect) is a specific feature accessible in Snowsight, but it's not the primary or defining characteristic of the general "Admin" area. Administration focuses more on internal account management.
+
+The final answer is A
+--------------------------------------------------
+
+--- Frage Nr. 796 (Richtig) ---
+Frage: Which function generates a Snowflake hosted file URL to a staged file using the stage name and relative file path as inputs?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+BUILD_STAGE_FILE_URL Generates a Snowflake-hosted file URL to a staged file using the stage name and relative file path as inputs. A file URL permits prolonged access to a specified file. That is, the file URL does not expire.
+https://www.bing.com/search?q=Which+function+generates+a+Snowflake+hosted+file+URL+to+a+staged+file+using+the+stage+name+and+relative+file+path+as+inputs%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=which+function+generates+a+snowflake+hosted+file+url+to+a+staged+file+using+the+stage+name+and+relative+file+path+as+inputs%3F&sc=1-124&sk=&cvid=5528116F9D4748FBB98781BDF20E3EBA&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 797 (Falsch) ---
+Frage: What is the purpose of using the OBJECT_CONSTRUCT function with the COPY INTO command?
+Deine Antwort:     D
+Korrekte Antwort:  B
+
+Erklärung:
+Unloading a Relational Table to JSON¶ You can use the OBJECT_CONSTRUCT function combined with the COPY command to convert the rows in a relational table to a single VARIANT column and unload the rows into a file.
+--------------------------------------------------
+
+--- Frage Nr. 798 (Richtig) ---
+Frage: Which URL provides access to files in Snowflake without authorization?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - This URL type allows users to access unstructured data without authenticating into Snowflake or passing an authorization token.
+--------------------------------------------------
+
+--- Frage Nr. 799 (Richtig) ---
+Frage: What type of NULL values are supported in semi-structured data? (Choose two.)
+Deine Antwort:     B, E
+Korrekte Antwort:  B, E
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/semistructured-considerations  Snowflake supports two types of NULL values in semi-structured data:  SQL NULL: SQL NULL means the same thing for semi-structured data types as it means for structured data types: the value is missing or unknown.  JSON null (sometimes called “VARIANT NULL”): In a VARIANT column, JSON null values are stored as a string containing the word “null” to distinguish them from SQL NULL values.
+https://www.bing.com/search?q=What+type+of+NULL+values+are+supported+in+semi-structured+data%3F&qs=n&form=QBRE&sp=-1&lq=0&pq=what+type+of+null+values+are+supported+in+semi-structured+data%3F&sc=1-63&sk=&cvid=552AB51872BC42958FA09BAF7727140F&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 800 (Falsch) ---
+Frage: What are characteristics of transient tables in Snowflake? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  C, E
+
+Erklärung:
+A. Transient tables have a Fail-safe period of 7 days.
+
+Incorrect. A defining characteristic of transient tables is that they do not have a Fail-safe period. This is one of the main reasons they consume less storage credit than permanent tables. Fail-safe is typically 7 days for permanent tables.
+
+B. Transient tables can be cloned to permanent tables.
+
+Correct. Snowflake's CLONE command allows for zero-copy cloning. You can indeed clone a transient table to create a permanent table, or vice versa. For example: CREATE TABLE my_permanent_table CLONE my_transient_table;
+
+C. Transient tables persist until they are explicitly dropped.
+
+Correct. This is a crucial distinction from temporary tables. Unlike temporary tables (which are automatically dropped at the end of the session), transient tables, like permanent tables, remain in the database until an explicit DROP TABLE command is executed.
+
+D. Transient tables can be altered to make them permanent tables.
+
+Incorrect. You cannot directly ALTER TABLE a transient table to change its transient property and make it a permanent table (or vice versa). The transient property is set at table creation and is immutable. You would need to clone the table or recreate it.
+
+E. Transient tables have Time Travel retention periods of 0 or 1 day.
+
+Incorrect. By default, transient tables have a 1-day Time Travel period. While they can be set to 0 days, for Enterprise Edition accounts or higher, the Time Travel period for transient tables can be extended up to 90 days. Therefore, stating it's only "0 or 1 day" is not entirely accurate. The key differentiator for transient tables regarding data retention is the lack of Fail-safe, not necessarily the Time Travel duration itself (which can be similar to permanent tables, up to 90 days).
+
+The final answer is B,C
+--------------------------------------------------
+
+--- Frage Nr. 801 (Richtig) ---
+Frage: The INFORMATION_SCHEMA included in each database contains which objects? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+Revised selection after careful review of search results:
+
+A. Views for all the objects contained in the database (e.g., TABLES, VIEWS, COLUMNS specific to MY_DB) - This is definitively true.
+
+D. Table functions for historical and usage data across the Snowflake account (e.g., QUERY_HISTORY(), LOGIN_HISTORY(), etc. callable from MY_DB.INFORMATION_SCHEMA) - The search results clearly state this.
+
+The final answer is A,D
+--------------------------------------------------
+
+--- Frage Nr. 802 (Richtig) ---
+Frage: The use of which technique or tool will improve Snowflake query performance on very large tables?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+correct answer is B
+Correct
+--------------------------------------------------
+
+--- Frage Nr. 803 (Richtig) ---
+Frage: Which Snowflake layer is associated with virtual warehouses?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B correct  https://docs.snowflake.com/en/user-guide/intro-key-concepts
+Correct
+--------------------------------------------------
+
+--- Frage Nr. 804 (Falsch) ---
+Frage: Which MINIMUM set of privileges is required to temporarily bypass an active network policy by configuring the user object property MINS_TO_BYPASS_NETWORK_POLICY?
+Deine Antwort:     A
+Korrekte Antwort:  D
+
+Erklärung:
+It is possible to temporarily bypass a network policy for a set number of minutes by configuring the user object property MINS_TO_BYPASS_NETWORK_POLICY, which can be viewed by executing DESCRIBE USER. Only Snowflake can set the value for this object property. Please contact Snowflake Support to set a value for this property.
+D only snowflake support allows that https://docs.snowflake.com/en/user-guide/network-policies#bypassing-a-network-policy
+--------------------------------------------------
+
+--- Frage Nr. 805 (Richtig) ---
+Frage: What authentication method does the Kafka connector use within Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://www.bing.com/search?q=What+authentication+method+does+the+Kafka+connector+use+within+Snowflake%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=what+authentication+method+does+the+kafka+connector+use+within+snowflake%3F&sc=1-73&sk=&cvid=F1A4FEE251F74FFF9171AA41AD3EBA9D&ghsh=0&ghacc=0&ghpl=
+A https://docs.snowflake.com/en/user-guide/kafka-connector-install#download-the-kafka-connector-files
+--------------------------------------------------
+
+--- Frage Nr. 806 (Richtig) ---
+Frage: What is the purpose of the Snowflake SPLIT_TO_TABLE function?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/sql-reference/functions/split_to_table
+https://www.bing.com/search?q=What+is+the+purpose+of+the+Snowflake+SPLIT_TO_TABLE+function%3F&qs=ds&form=QBRE
+--------------------------------------------------
+
+--- Frage Nr. 807 (Richtig) ---
+Frage: What feature of Snowflake Continuous Data Protection can be used for maintenance of historical data?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Why not Fail-Safe?
+Only snowflake support has access to fail safe and can restore data. Time travel the user can do it.
+correct
+--------------------------------------------------
+
+--- Frage Nr. 808 (Richtig) ---
+Frage: What aspect of an executed query is represented by the remote disk I/O statistic of the Query Profile in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D. Time spent reading and writing data from and to remote storage when the data being accessed does not fit into either the virtual warehouse memory or the local disk: This is the most accurate description. Snowflake's virtual warehouses are designed to keep frequently accessed data in their local memory and local SSD cache for performance. When a query requires more data than can be held in these local caches (or if the caches are cold), the data must be read from (or written to) the remote, persistent cloud storage layer. High "Remote Disk I/O" typically indicates a "spilling" to remote storage, which can be a performance bottleneck and often suggests that the virtual warehouse size might be insufficient for the query's workload.
+The final answer is D
+--------------------------------------------------
+
+--- Frage Nr. 809 (Richtig) ---
+Frage: What action can a user take to address query concurrency issues?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+D is wrong because here we need to (scale out) parallelism by adding more cluster no (scale up) mean adding more CPU/memory
+--------------------------------------------------
+
+--- Frage Nr. 810 (Falsch) ---
+Frage: What does the client redirect feature in Snowflake enable?
+Deine Antwort:     C
+Korrekte Antwort:  B
+
+Erklärung:
+B. A redirect of client connections to Snowflake accounts in different regions for business continuity.
+
+This is the correct answer. Snowflake's Client Redirect feature allows you to configure a custom connection URL (a connection URL alias) for your applications. In a scenario where you have multiple Snowflake accounts (e.g., a primary account and one or more replica accounts) in different regions, and these accounts are kept synchronized using replication and failover groups, the client redirect feature enables transparent redirection of client connections.
+
+If your primary account in one region experiences an outage, you can fail over to a replica account in a different region. The client redirect mechanism automatically (or with a small update to the alias) redirects client connections to the newly designated primary account in the different region, ensuring your applications maintain connectivity and operations with minimal disruption. This is crucial for achieving high availability and business continuity across regions.
+--------------------------------------------------
+
+--- Frage Nr. 811 (Richtig) ---
+Frage: Which Snowflake feature can be used to find sensitive data in a table or column?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Why not masking policies?
+Classification will let you find sensitive data.  Masking policies are used to mask sensitive data after you found them.  Dynamic Data Masking is a Column-level Security feature that uses masking policies to selectively mask plain-text data in table and view columns at query time https://docs.snowflake.com/en/user-guide/security-column-ddm-intro  https://docs.snowflake.com/en/user-guide/governance-classify-concepts
+Correct
+--------------------------------------------------
+
+--- Frage Nr. 812 (Richtig) ---
+Frage: Which Snowflake feature allows a user to track sensitive data for compliance, discovery, protection, and resource usage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+At Snowflake, data governance is all about providing our customers native capabilities to easily and efficiently govern data at scale. Previously, we launched capabilities such as Object Tagging, Dynamic Data Masking, Row Access Policies, and Access History to help keep track of sensitive data by tagging it, assigning masking policies to protect columns with sensitive data from unauthorized access, and audit the access of sensitive columns using Access History.  https://www.snowflake.com/blog/protect-sensitive-data-tag-based-masking/
+https://www.snowflake.com/blog/protect-sensitive-data-tag-based-masking/
+--------------------------------------------------
+
+--- Frage Nr. 813 (Richtig) ---
+Frage: Snowflake’s hierarchical key mode includes which keys? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  A, C
+
+Erklärung:
+Answer is A & C Snowflake’s hierarchical key model consists of four levels of keys: The root key Account master keys Table master keys File keys
+Answer is A&C https://docs.snowflake.com/en/user-guide/security-encryption-manage
+--------------------------------------------------
+
+--- Frage Nr. 814 (Falsch) ---
+Frage: What can the Snowflake SCIM API be used to manage? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  D, E
+
+Erklärung:
+A. Integrations: SCIM is not used to manage Snowflake integrations (e.g., storage integrations, API integrations). These are managed via SQL commands.
+
+B. Network policies: Network policies are security features managed through SQL DDL statements (e.g., CREATE NETWORK POLICY, ALTER ACCOUNT SET NETWORK_POLICY). SCIM is not involved in managing network policies.
+
+C. Session policies: Session policies are used to control session behavior and are managed via SQL DDL statements (e.g., CREATE SESSION POLICY). SCIM is not used for this.
+
+D. Roles: Correct. The SCIM API allows for the creation, update, and deletion of roles, as well as the assignment of users to roles.
+
+E. Users: Correct. The core function of SCIM is to manage user identities, including creating new users, updating user attributes, enabling/disabling users, and deleting users.
+
+Therefore, the Snowflake SCIM API can be used to manage Roles and Users.
+
+The final answer is D,E
+--------------------------------------------------
+
+--- Frage Nr. 815 (Falsch) ---
+Frage: Which privilege is required to use the search optimization service in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  C
+
+Erklärung:
+C correct https://docs.snowflake.com/en/user-guide/search-optimization-service  What Access Control Privileges Are Needed For the Search Optimization Service?¶ To add, configure, or remove search optimization for a table, you must have the following privileges:  You must have OWNERSHIP privilege on the table.  You must have ADD SEARCH OPTIMIZATION privilege on the schema that contains the table.  GRANT ADD SEARCH OPTIMIZATION ON SCHEMA <schema_name> TO ROLE <role>
+https://www.bing.com/search?q=Which+privilege+is+required+to+use+the+search+optimization+service+in+Snowflake%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=which+privilege+is+required+to+use+the+search+optimization+service+in+snowflake%3F&sc=1-80&sk=&cvid=B4C1407FB1A046E49C04B50ACAFBA18C&ghsh=0&ghacc=0&ghpl=
+--------------------------------------------------
+
+--- Frage Nr. 816 (Richtig) ---
+Frage: What is generally the FASTEST way to bulk load data files from a stage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-considerations-load#:~:text=Of%20the%20three%20options%20for,load%20up%20to%201%2C000%20files.
+https://docs.snowflake.com/en/user-guide/data-load-considerations-load  Tip Of the three options for identifying/specifying data files to load from a stage, providing a discrete list of files is generally the fastest; however, the FILES parameter supports a maximum of 1,000 files, meaning a COPY command executed with the FILES parameter can only load up to 1,000 files.
+--------------------------------------------------
+
+--- Frage Nr. 817 (Falsch) ---
+Frage: How does a Snowflake user extract the URL of a directory table on an external stage for further transformation?
+Deine Antwort:     B
+Korrekte Antwort:  D
+
+Erklärung:
+The GET_STAGE_LOCATION function returns the location of a stage, including the URL of the directory table. The syntax for the GET_STAGE_LOCATION function. SELECT GET_STAGE_LOCATION('my_stage')
+D https://docs.snowflake.com/en/sql-reference/functions/get_stage_location
+--------------------------------------------------
+
+--- Frage Nr. 818 (Richtig) ---
+Frage: A Snowflake user needs to share unstructured data from an internal stage to a reporting tool that does not have Snowflake access.
+
+Which file function should be used?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C. GET_PRESIGNED_URL: This function generates a pre-signed URL for a file in a stage. A pre-signed URL is a temporary, time-limited URL that grants direct access to the underlying cloud storage location (e.g., AWS S3, Azure Blob Storage, Google Cloud Storage) where the file resides. Crucially, access via a pre-signed URL does not require Snowflake authentication; anyone with the URL can access the file until the URL expires. This is exactly what's needed for an external reporting tool that doesn't have direct Snowflake access.
+Answer is C.
+--------------------------------------------------
+
+--- Frage Nr. 819 (Richtig) ---
+Frage: The use of which Snowflake table type will reduce costs when working with ETL workflows?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C since temporary tables are only available for the duration of a session, and they are not stored in Snowflake's permanent storage. This means that they do not incur any storage costs.
+Temporary tables exist only for the duration of the session and do not incur long-term storage costs. However, they are not accessible across sessions, which can limit their use in complex ETL workflows.  Transient tables strike the right balance between cost-effectiveness and functionality for ETL processes.
+--------------------------------------------------
+
+--- Frage Nr. 820 (Falsch) ---
+Frage: What is one of the characteristics of data shares?
+Deine Antwort:     B
+Korrekte Antwort:  C
+
+Erklärung:
+A view can only be shared if it is created as a secure view or marked secure using the ALTER VIEW view_name SET_SECURE statement.
+Data sharing in Snowflake is read-only, meaning that all database objects shared between accounts cannot be modified or deleted, including adding or modifying table data 1. https://docs.snowflake.com/en/user-guide/data-sharing-intro
+--------------------------------------------------
+
+--- Frage Nr. 821 (Richtig) ---
+Frage: What is the MINIMUM configurable idle timeout value for a session policy in Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+The timeout period begins upon a successful authentication to Snowflake. If a session policy is not set, Snowflake uses a default value of 240 minutes (i.e. 4 hours). The minimum configurable idle timeout value for a session policy is 5 minutes. When the session expires, the user must authenticate to Snowflake again.
+5 min https://docs.snowflake.com/en/user-guide/session-policies
+--------------------------------------------------
+
+--- Frage Nr. 822 (Richtig) ---
+Frage: Which command is used to unload data from a Snowflake table to an external stage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A. COPY INTO: This is the correct command for unloading data from a Snowflake table to a stage. The syntax for unloading is COPY INTO @<stage_name>/<path> FROM <table_name>; or COPY INTO '<external_location_uri>' FROM <table_name>;. It exports the table's data into one or more files in the specified stage location.
+
+B. COPY INTO followed by GET: While COPY INTO is used for unloading to a stage, GET is used to download files from a stage to a local file system. So, COPY INTO would move the data to the stage, and then GET could be used to retrieve it from the stage to your local machine, but the command to get it to the stage is just COPY INTO.
+
+C. GET: This command is used to download files from a Snowflake stage to a local file system. It does not unload data from a table to a stage.
+
+D. COPY INTO followed by PUT: COPY INTO unloads data from a table to a stage. PUT is used to upload files from a local file system to a stage. This sequence would not make sense for unloading data from a table to a stage.
+
+The final answer is A
+--------------------------------------------------
+
+--- Frage Nr. 823 (Falsch) ---
+Frage: What is a characteristic of materialized views in Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  A
+
+Erklärung:
+A. Materialized views do not allow joins.
+
+Incorrect. Snowflake materialized views do allow joins between multiple tables. However, there are restrictions, such as each base table in the join must be referenced only once. Simple inner joins are commonly supported.
+
+B. Clones of materialized views can be created directly by the user.
+
+Incorrect. As of current Snowflake functionality, you cannot directly clone a materialized view using the CREATE MATERIALIZED VIEW ... CLONE ... syntax. You can clone the underlying base tables and then recreate the materialized view on the cloned tables, but the materialized view itself cannot be cloned directly.
+
+C. Multiple tables can be joined in the underlying query of a materialized view.
+
+Correct. This is a key capability of materialized views. They are designed to pre-compute the results of queries, including those that involve joining data from multiple base tables, to speed up subsequent queries that use the materialized view.
+
+D. Aggregate functions can be used as window functions in materialized views.
+
+Incorrect. Snowflake materialized views do not support window functions (i.e., aggregate functions used with an OVER() clause). This is a known limitation. Materialized views can use aggregate functions, but only as standard aggregate functions (e.g., SUM(column), COUNT(column)), not as window functions.
+
+Therefore, the only true characteristic among the given options is that multiple tables can be joined in the underlying query of a materialized view.
+
+The final answer is C
+--------------------------------------------------
+
+--- Frage Nr. 824 (Richtig) ---
+Frage: Which Snowflake URL type allows users or applications to download or access files directly from Snowflake stage without authentication?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Pre-signed allows to download without auth
+D is correct  https://docs.snowflake.com/en/sql-reference/functions/build_scoped_file_url
+--------------------------------------------------
+
+--- Frage Nr. 825 (Richtig) ---
+Frage: Which SQL command will download all the data files from an internal table stage named TBL_EMPLOYEE to a local window directory or folder on a client machine in a folder named folder with space within the C drive?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+I think is A, because windows file system use back slash
+https://docs.snowflake.com/en/sql-reference/sql/get#required-parameters
+--------------------------------------------------
+
+--- Frage Nr. 826 (Falsch) ---
+Frage: How can the COPY command be used to unload data from a table to an internal stage?
+Deine Antwort:     A
+Korrekte Antwort:  A, B
+
+Erklärung:
+A. COPY INTO [location]: This accurately represents the command for unloading data from a table to a stage. The [location] placeholder would be replaced by the specific path to your internal stage (e.g., @my_internal_stage/my_files/). This is the fundamental syntax for unloading.
+
+B. COPY INTO [table]: This syntax is used for loading data into a table from a stage (e.g., COPY INTO my_table FROM @my_stage;). It's the reverse operation of unloading.
+
+C. COPY INTO [location] with single-true: While SINGLE = TRUE (or SINGLE = true) is a valid COPY INTO option to unload data into a single file, it's an option that modifies the unload behavior, not the core command syntax itself. The question asks "How can the COPY command be used," implying the primary structure.
+
+D. COPY INTO S3://[bucket]: This is a valid COPY INTO syntax for unloading, but it specifies an external location (an S3 bucket) directly, not an internal stage. The question specifically asks about an internal stage.
+
+Therefore, COPY INTO [location] correctly represents how the command is used to unload data to an internal stage.
+
+The final answer is A
+--------------------------------------------------
+
+--- Frage Nr. 827 (Richtig) ---
+Frage: How does a Snowflake stored procedure compare to a User-Defined Function (UDF)?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+A. A single executable statement can call only two stored procedures. In contrast, a single SQL statement can call multiple UDFs.
+
+Incorrect for stored procedures: A single CALL statement can only call one stored procedure.
+
+B. A single executable statement can call only one stored procedure. In contrast, a single SQL statement can call multiple UDFs.
+
+Correct. This accurately describes the distinct invocation patterns. A CALL statement is a single executable statement that can only invoke one procedure. A SELECT statement (a single SQL statement) can include multiple UDF calls within its expressions.
+
+C. A single executable statement can call multiple stored procedures. In contrast, multiple SQL statements can call the same UDFs.
+
+Incorrect for stored procedures.
+
+D. Multiple executable statements can call more than one stored procedure. In contrast, a single SQL statement can call multiple UDFs.
+
+The first part ("Multiple executable statements can call more than one stored procedure") is true (e.g., CALL proc1(); CALL proc2();), but the comparison structure asks about a single executable statement for the procedure side, making it less precise than option B.
+
+The most accurate comparison is given by option B.
+
+The final answer is B
+--------------------------------------------------
+
+--- Frage Nr. 828 (Richtig) ---
+Frage: Which command should be used to unload all the rows from a table into one or more files in a named stage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A: Unload from Table to Named Stage : https://docs.snowflake.com/en/user-guide/data-unload-overview.
+The correct answer is A - The COPY INTO command is used to unload all the rows from a table into one or more files in a named stage in Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 829 (Richtig) ---
+Frage: Which command is used to unload data from a table or move a query result to a stage?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+The COPY INTO command is used to unload all the rows from a table into one or more files in a named stage in Snowflake.
+A is Correct
+--------------------------------------------------
+

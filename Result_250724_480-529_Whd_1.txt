@@ -1,0 +1,663 @@
+==================================================
+### Prüfungsprotokoll ###
+Datum: 24.07.2025, 12:42:54 Uhr
+Modus: Practice
+Auswahl: Wiederholung (sorted) (50 Fragen)
+
+--- Endergebnis ---
+Punkte: 45 von 50
+Erfolgsquote: 90.00%
+==================================================
+
+--- Frage Nr. 480 (Richtig) ---
+Frage: What is the MINIMUM size requirement when creating a Snowpark-optimized virtual warehouse?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+XS seems to be the minimum size mentioned in the table (memory 16GB, CPU Default or x86, minimum warehouse size required XSMALL): https://docs.snowflake.com/en/user-guide/warehouses-snowpark-optimized
+Tried creating a new warehouse in Snowflake, as well as tried altering an existing one- Either cases, I was able to set 'snowpark optimised' for X-small !
+C  https://docs.snowflake.com/en/user-guide/warehouses-snowpark-optimized
+--------------------------------------------------
+
+--- Frage Nr. 481 (Falsch) ---
+Frage: Which role has the ability to create and manage users and roles?
+Deine Antwort:     D
+Korrekte Antwort:  B
+
+Erklärung:
+USERADMIN can create Users but not Roles. SECURITYADMIN is the right answer
+https://docs.snowflake.com/en/user-guide/admin-user-management
+d. security admin https://community.snowflake.com/s/article/Users-with-securityadmin-role-can-grant-accountadmin-role-to-any-other-user-or-role
+--------------------------------------------------
+
+--- Frage Nr. 482 (Falsch) ---
+Frage: What issues can be identified and troubleshooted using the Query Profile? (Choose two.)
+Deine Antwort:     B, E
+Korrekte Antwort:  B, D
+
+Erklärung:
+B & D https://docs.snowflake.com/en/user-guide/ui-query-profile
+Correct Answers: B. Cartesian products and E. Virtual warehouse credit consumption Cartesian products: The Query Profile can help identify inefficient joins or joins without proper join conditions that result in Cartesian products (i.e., when each row from one table is joined with all rows of another table). This can significantly impact query performance.  Virtual warehouse credit consumption: The Query Profile provides insights into the resources used by a query, including the credits consumed by the virtual warehouse executing the query. This helps in analyzing and optimizing resource usage.
+B & D  Cartesian product is the same as Eploding JOINs https://docs.snowflake.com/en/user-guide/ui-query-profile
+--------------------------------------------------
+
+--- Frage Nr. 483 (Richtig) ---
+Frage: What happens to the objects in a reader account when the DROP MANAGED ACCOUNT command is executed?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Answer A - https://docs.snowflake.com/en/sql-reference/sql/drop-managed-account
+A  https://docs.snowflake.com/en/sql-reference/sql/drop-managed-account
+--------------------------------------------------
+
+--- Frage Nr. 484 (Richtig) ---
+Frage: What function can be used with the recursive argument to return a list of distinct key names in all nested elements in an object?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Agree with A
+"Related to Using FLATTEN to List Distinct Key Names, you can use the FLATTEN function with the RECURSIVE argument to retrieve all keys and paths in an OBJECT." https://docs.snowflake.com/en/user-guide/querying-semistructured#using-flatten-to-list-paths-in-an-object
+A  https://docs.snowflake.com/en/sql-reference/functions/flatten
+--------------------------------------------------
+
+--- Frage Nr. 485 (Richtig) ---
+Frage: What does Snowflake recommend when planning virtual warehouse usage for a data load?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Agree with B other answers makes no sense especially A and D
+https://docs.snowflake.com/user-guide/data-load-considerations-plan
+Dedicating separate warehouses to load and query operations:  Loading large data sets can affect query performance. We recommend dedicating separate warehouses for loading and querying operations to optimize performance for each.
+--------------------------------------------------
+
+--- Frage Nr. 486 (Richtig) ---
+Frage: Which Snowflake database object can be used to track data changes made to table data?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+A. Tag: Tags are used for data governance, classification, and cost management. They provide metadata about objects but do not track data changes.
+
+B. Task: Tasks are used to execute SQL statements or stored procedures on a schedule. They are for workflow automation, not for tracking data changes themselves.
+
+C. Stream: A stream (specifically a table stream) records Data Manipulation Language (DML) changes made to a source table. This includes inserts, updates, and deletes, allowing you to capture and process these changes incrementally. It's Snowflake's built-in Change Data Capture (CDC) mechanism.
+
+
+
+D. Stored procedure: Stored procedures contain executable SQL code and procedural logic. While you could potentially write complex logic within a stored procedure to manually track changes (e.g., by comparing tables), a stream is the dedicated and much more efficient native object for automatic change data capture.
+
+The final answer is  
+C
+​
+--------------------------------------------------
+
+--- Frage Nr. 487 (Richtig) ---
+Frage: Who can activate and enforce a network policy for all users in a Snowflake account? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+BC - https://docs.snowflake.com/en/user-guide/network-policies
+B & C  https://docs.snowflake.com/en/sql-reference/sql/create-network-policy
+Agree with your answer B+C , but the link should be  https://docs.snowflake.com/en/user-guide/network-policies Activating a network policy for an account enforces the policy for all users in the account.  Only security administrators (i.e. users with the SECURITYADMIN role) or higher or a role with the global ATTACH POLICY privilege can activate a network policy for an account.
+--------------------------------------------------
+
+--- Frage Nr. 488 (Falsch) ---
+Frage: How can a data provider share their Snowflake data? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, E
+
+Erklärung:
+A. External table: An external table allows users to query data files located in an external stage (e.g., S3, Azure Blob, GCS) as if they were tables in Snowflake. This is a mechanism for accessing data that resides outside Snowflake, not for a Snowflake provider to share data that is managed within their Snowflake account.
+
+B. Snowpark API: Snowpark is a developer framework that enables users to write code in supported languages (like Python, Java, Scala) to build data applications directly within Snowflake. It's a computing framework for processing data, not a direct mechanism for sharing datasets between accounts.
+
+C. Direct share: This is a fundamental Snowflake data sharing capability. A data provider can create a "share" object and grant access to specific databases, schemas, tables, views, and functions to one or more designated consumer Snowflake accounts. This allows for private, controlled, and direct sharing between known accounts.
+
+D. External function: An external function allows Snowflake to call external services (e.g., cloud functions) from within SQL queries. It's used for extending Snowflake's functionality and integrating with external logic, not for sharing datasets.
+
+E. Snowflake Marketplace listing: The Snowflake Marketplace is a global platform where data providers can list and distribute their data products (datasets, data services, etc.) to a wide audience of Snowflake users. Consumers can discover, subscribe to, and access these data products directly through the Marketplace. This is a scalable model for sharing with multiple, potentially unknown, consumers.
+
+Therefore, the two primary methods for a data provider to share their Snowflake data are Direct Shares and Snowflake Marketplace listings.
+
+The final answer is  
+C,E
+​
+--------------------------------------------------
+
+--- Frage Nr. 489 (Richtig) ---
+Frage: What will prevent unauthorized access to a Snowflake account from an unknown source?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+I think the correct answer is A but I agree that without much context C might be an option
+Both options (A) Network policy and (C) Multi-Factor Authentication (MFA) contribute to preventing unauthorized access, but MFA is specifically designed to provide an additional layer of security by requiring users to provide multiple forms of verification before gaining access, making it harder for unauthorized users to access the account even if they manage to bypass network policies. So, while network policies play a role in access control, MFA is typically considered a more effective measure against unauthorized access from unknown sources.
+--------------------------------------------------
+
+--- Frage Nr. 490 (Richtig) ---
+Frage: Which query type is supported for implementing the search optimization service?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+A. Queries with column concatenation: The Search Optimization Service primarily optimizes searches on individual columns or through specific functions. Optimizing searches on concatenated columns is not a explicitly supported or primary use case for this service.
+
+B. Substring search queries on external tables: The Search Optimization Service can only be enabled for internal (managed) tables in Snowflake. It does not support external tables.
+
+C. String searches on columns using the COLLATE function: The Search Optimization Service does support optimizing searches on columns that use the COLLATE function. This means that queries performing case-insensitive or accent-insensitive string comparisons can benefit from search optimization.
+
+D. Geography value column searches using geospatial functions: The Search Optimization Service does support accelerating point lookups and some range searches on GEOGRAPHY columns when using specific geospatial functions (e.g., ST_INTERSECTS, ST_CONTAINS).
+
+Both C and D describe query types that are explicitly supported by the Search Optimization Service. If this is a "choose one" question, it implies selecting the best or most specific fit. Both are valid. However, geospatial searches are a distinct and advanced capability often highlighted.
+
+The final answer is  
+D
+​
+--------------------------------------------------
+
+--- Frage Nr. 491 (Richtig) ---
+Frage: What Snowflake feature provides a data hub for secure data collaboration, with a selected group of invited members?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Data Exchange provides a data hub for securely collaborating around data with a selected group of members that you invite.
+C  https://docs.snowflake.com/en/user-guide/data-exchange
+--------------------------------------------------
+
+--- Frage Nr. 492 (Richtig) ---
+Frage: Which semi-structured data function interprets an input string as a JSON document that produces a VARIANT value?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+PARSE_JSON Interprets an input string as a JSON document, producing a VARIANT value.
+A  https://docs.snowflake.com/en/sql-reference/functions/parse_json
+--------------------------------------------------
+
+--- Frage Nr. 493 (Richtig) ---
+Frage: Which Snowflake data types can be used to build nested hierarchical data? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+A. INTEGER: This is a numeric data type for whole numbers. It cannot store nested or hierarchical data.
+
+B. OBJECT: In Snowflake, the OBJECT data type is used to store unordered collections of key-value pairs, where keys are strings and values can be of any other data type (including other OBJECTs or ARRAYs). This directly allows for building nested hierarchical data structures, similar to JSON objects.
+
+C. VARIANT: The VARIANT data type is Snowflake's most flexible semi-structured data type. It can store values of any other data type, including OBJECTS and ARRAYS, as well as scalar types. Because it can hold OBJECTs and ARRAYs, it inherently supports and is commonly used for storing and querying nested hierarchical data (e.g., entire JSON documents).
+
+D. VARCHAR: This is a string (text) data type. While you can store a string representation of JSON or XML in a VARCHAR column, Snowflake treats it merely as a string. To work with it as hierarchical data, you would need to explicitly parse it using functions like PARSE_JSON into a VARIANT or OBJECT type. It doesn't inherently build or support hierarchical data itself.
+
+E. LIST: Snowflake does not have a distinct LIST data type. The equivalent data type for an ordered collection of values (similar to a JSON array) is ARRAY.
+
+Therefore, the Snowflake data types that can be used to build nested hierarchical data are OBJECT and VARIANT.
+
+The final answer is
+
+B,C
+--------------------------------------------------
+
+--- Frage Nr. 494 (Richtig) ---
+Frage: Which statistics can be used to identify queries that have inefficient pruning? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+CD - efficient pruning is when the number of partition scanned is way lower than the total number of partitions so if you compare the two you can telle if your pruning is efficient or not.
+https://select.dev/posts/snowflake-micro-partitions
+"The efficiency of pruning can be observed by comparing Partitions scanned and Partitions total statistics in the TableScan operators. If the former is a small fraction of the latter, pruning is efficient. If not, the pruning did not have an effect." https://docs.snowflake.com/en/user-guide/ui-query-profile#inefficient-pruning
+--------------------------------------------------
+
+--- Frage Nr. 495 (Richtig) ---
+Frage: Which element in the Query Profile interface shows the relationship between the nodes in the execution of a query?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/ui-query-profile Operator tree The middle pane displays a graphical representation of all the operator nodes for the selected step, including the relationships between each operator node.
+--------------------------------------------------
+
+--- Frage Nr. 496 (Richtig) ---
+Frage: What will happen if a Snowflake user suspends the updates to a materialized view?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A  https://docs.snowflake.com/en/user-guide/views-materialized#label-materialized-view-suspend-example
+A is correct
+A  https://docs.snowflake.com/en/user-guide/views-materialized#:~:text=ALTER%20MATERIALIZED%20VIEW%20%3Cname%3E%20SUSPEND
+--------------------------------------------------
+
+--- Frage Nr. 497 (Richtig) ---
+Frage: Which Snowflake function will parse a JSON-null into a SQL-null?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+STRIP_NULL_VALUE: Converts a JSON null value to a SQL NULL value. All other variant values are passed unchanged.
+B  https://docs.snowflake.com/en/sql-reference/functions/to_variant
+--------------------------------------------------
+
+--- Frage Nr. 498 (Richtig) ---
+Frage: Which Snowflake command can be used to unload the result of a query to a single file?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Answer is C : We need to set the parameter SINGLE = TRUE or else data will be unloaded to multiple files and the GET command is for unloading.
+https://docs.snowflake.com/en/user-guide/data-unload-considerations
+--------------------------------------------------
+
+--- Frage Nr. 499 (Richtig) ---
+Frage: How are micro-partitions enabled on Snowflake tables?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B  https://docs.snowflake.com/en/user-guide/tables-clustering-micropartitions#:~:text=Micro%2Dpartitioning%20is%20automatically%20performed%20on%20all%20Snowflake%20tables.%20Tables%20are%20transparently%20partitioned%20using%20the%20ordering%20of%20the%20data%20as%20it%20is%20inserted/loaded.
+--------------------------------------------------
+
+--- Frage Nr. 500 (Richtig) ---
+Frage: What persistent data structures are used by the search optimization service to improve the performance of point lookups?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+A. Micro-partitions: These are the fundamental immutable storage units for all data in Snowflake tables. While the Search Optimization Service works with micro-partitions, micro-partitions themselves are the data blocks, not the additional acceleration structures created by the service.
+
+B. Clustering keys: Clustering keys are defined on tables to physically organize data in micro-partitions, which helps with pruning (skipping irrelevant micro-partitions). While they improve query performance, they are a table property for data organization, not the specialized data structures created by the Search Optimization Service.
+
+C. Equality searches: This describes a type of query that benefits from the Search Optimization Service (e.g., WHERE column = 'value'). It is not a data structure.
+
+D. Search access paths: This is the correct answer. When the Search Optimization Service is enabled for a table, Snowflake automatically creates and maintains search access paths. These are specialized, persistent data structures that allow Snowflake to quickly identify the micro-partitions containing the specific values being searched, thereby accelerating point lookups, substring searches, and other supported query types.
+
+
+The final answer is  
+D
+​
+--------------------------------------------------
+
+--- Frage Nr. 501 (Richtig) ---
+Frage: Which Snowflake feature provides increased login security for users connecting to Snowflake that is powered by Duo Security service?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D - MFA does that
+https://docs.snowflake.com/en/user-guide/ui-snowsight-profile#enroll-in-multi-factor-authentication-mfa
+Snowflake supports multi-factor authentication (i.e. MFA) to provide increased login security for users connecting to Snowflake. MFA support is provided as an integrated Snowflake feature, powered by the Duo Security service, which is managed completely by Snowflake.
+--------------------------------------------------
+
+--- Frage Nr. 502 (Richtig) ---
+Frage: A user with which privileges can create or manage other users in a Snowflake account? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  D, E
+
+Erklärung:
+D& E  Create users The USERADMIN system role can create users using SQL (CREATE USER).  If you prefer to use a custom role for this purpose, grant the CREATE USER privilege on the account to this role.  Modify users Only the role with the OWNERSHIP privilege on a user, or a higher role, can modify most user properties using SQL (ALTER USER). In addition, the role must have the global CREATE USER privilege.  https://docs.snowflake.com/en/user-guide/admin-user-management
+Create users: The USERADMIN system role can create users using SQL (CREATE USER). If you prefer to use a custom role for this purpose, grant the CREATE USER privilege on the account to this role.  https://docs.snowflake.com/en/user-guide/admin-user-management
+--------------------------------------------------
+
+--- Frage Nr. 503 (Richtig) ---
+Frage: Which items are considered schema objects in Snowflake? (Choose two.)
+Deine Antwort:     A, B
+Korrekte Antwort:  A, B
+
+Erklärung:
+A. Pipe: A Pipe is a named object that defines a COPY INTO statement for loading data from staged files into a table. Pipes are created within a schema.
+
+
+Schema object.
+
+B. File format: A File Format object defines properties for parsing data files (e.g., CSV, JSON, Parquet). File Format objects are created within a schema and are referenced by COPY INTO commands.
+
+Schema object.
+
+C. Resource monitor: A Resource Monitor is an account-level object used to monitor and control credit usage across virtual warehouses. It is not bound to a specific database or schema.
+
+Not a schema object (it's an account object).
+
+D. Storage integration: A Storage Integration is an account-level object that securely stores connection information and credentials for external cloud storage. It is referenced by external stages but is not a schema object itself.
+
+Not a schema object (it's an account object).
+
+E. Virtual warehouse: A Virtual Warehouse is a compute cluster used for processing queries. It is an account-level object, independent of databases or schemas.
+
+Not a schema object (it's an account object).
+
+Therefore, Pipes and File Formats are considered schema objects in Snowflake.
+
+The final answer is  
+A,B
+​
+--------------------------------------------------
+
+--- Frage Nr. 504 (Richtig) ---
+Frage: What does SnowCD help Snowflake users to do?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - straightforward
+https://docs.snowflake.com/en/user-guide/snowcd
+C https://docs.snowflake.com/en/user-guide/snowcd
+--------------------------------------------------
+
+--- Frage Nr. 505 (Richtig) ---
+Frage: A Snowflake account has activated federated authentication.
+
+What will occur when a user with a password that was defined by Snowflake attempts to log in to Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+A. The user will be unable to enter a password. This is incorrect. The login interface (web UI, SnowSQL, etc.) will always prompt for a password.
+
+B. The user will encounter an error, and will not be able to log in. This would only happen if the user enters an incorrect password, or if there's another system issue. Assuming correct credentials, an error is not the expected outcome.
+
+C. The user will be able to log into Snowflake successfully. If a user's password has been defined by Snowflake, and they provide the correct username and that password, they will successfully authenticate and log in to their Snowflake account. This is the standard direct authentication flow.
+
+D. After entering the username and password, the user will be redirected to an Identity Provider (IdP) login page. This scenario describes federated authentication (Single Sign-On or SSO). In an SSO setup, Snowflake does not define or manage the user's password; an external IdP does. When a user configured for SSO attempts to log in to Snowflake, they are typically redirected to the IdP for authentication. This option contradicts the premise that the password was "defined by Snowflake."
+
+Therefore, if the password was indeed defined by Snowflake, a successful login attempt with the correct credentials will result in a successful login.
+
+The final answer is  
+C
+​
+--------------------------------------------------
+
+--- Frage Nr. 506 (Richtig) ---
+Frage: Which solution improves the performance of point lookup queries that return a small number of rows from large tables using highly selective filters?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D  https://docs.snowflake.com/en/user-guide/search-optimization-service#:~:text=Selective%20point%20lookup%20queries%20on%20tables.%20A%20point%20lookup%20query%20returns%20only%20one%20or%20a%20small%20number%20of%20distinct%20rows.%20Use%20case%20examples%20include
+--------------------------------------------------
+
+--- Frage Nr. 507 (Richtig) ---
+Frage: What does a Notify &amp; Suspend action for a resource monitor do?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct agree with the others
+https://medium.com/@aitor.porcellaburu/snowpro-core-level-up-resource-monitoring-736cc4b13958
+--------------------------------------------------
+
+--- Frage Nr. 508 (Richtig) ---
+Frage: How can a Snowsight user change a Standard virtual warehouse to a Snowpark-optimized virtual warehouse?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - warehouse needs to be suspended
+C  https://docs.snowflake.com/en/user-guide/warehouses-snowpark-optimized
+Changing the warehouse type using the ALTER WAREHOUSE command is only supported for a warehouse in the SUSPENDED state.
+--------------------------------------------------
+
+--- Frage Nr. 509 (Richtig) ---
+Frage: According to best practices, which table type should be used if the data can be recreated outside of Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+A. Permanent table: This is the default table type. It provides full Time Travel (up to 90 days, configurable) and an additional 7-day Fail-safe period for disaster recovery. This offers the highest level of data retention and recoverability, but also incurs the highest storage costs. It's used for critical data that must be fully recoverable.
+
+B. Temporary table: These tables exist only for the duration of the user session in which they were created. They are automatically dropped at the end of the session and offer no Time Travel or Fail-safe. They are suitable for transient, session-specific data.
+
+
+C. Transient table: These tables are similar to permanent tables in that they persist beyond the current session and support Time Travel (up to 90 days, configurable). However, they do not have a Fail-safe period. This makes them less expensive to store than permanent tables. They are ideal for data that needs to persist and potentially leverage Time Travel, but can be easily recreated from an external source if a catastrophic loss were to occur (i.e., beyond the Time Travel window).
+
+D. Volatile table: This is not a standard, explicit table type keyword in Snowflake. The term "volatile" is sometimes used generically in database contexts, but in Snowflake, the specific types are Permanent, Transient, and Temporary.
+
+If data can be recreated outside of Snowflake, the extra protection and cost of the Fail-safe period (which only Permanent tables provide) is unnecessary. Transient tables offer persistence and Time Travel without this additional cost, making them the best practice for such data.
+
+The final answer is  
+C
+​
+--------------------------------------------------
+
+--- Frage Nr. 510 (Richtig) ---
+Frage: Which function unloads data from a relational table to JSON?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+OBJECT_CONSTRUCT builds the JSON structure from relational data, and TO_JSON converts that structure into the final JSON string for unloading into files. Both answers seem to be steps of the solution, but since the question mentions the table as the source, my guess would be D
+d is correct: https://community.snowflake.com/s/article/faq-can-i-unload-a-relational-table-with-multiple-columns-to-json
+--------------------------------------------------
+
+--- Frage Nr. 511 (Richtig) ---
+Frage: What is the purpose of the STRIP_NULL_VALUES file format option when loading semi-structured data files into Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D is correct
+Alternatively, if the “null” values in your files indicate missing values and have no other special meaning, we recommend setting the file format option STRIP_NULL_VALUES to TRUE when you load the semi-structured data files. This option removes OBJECT elements or ARRAY elements containing “null” values. https://docs.snowflake.com/en/user-guide/semistructured-considerations#label-variant-null
+--------------------------------------------------
+
+--- Frage Nr. 512 (Richtig) ---
+Frage: Which Snowflake edition enables data sharing only through Snowflake Support?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A is correct
+A  https://docs.snowflake.com/en/user-guide/intro-editions#:~:text=VPS%20accounts%20do%20not%20share%20any%20resources%20with%20accounts%20outside%20the%20VPS
+--------------------------------------------------
+
+--- Frage Nr. 513 (Richtig) ---
+Frage: What is the primary purpose of partitioning staged data files for regular data loads?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-considerations-manage Note  "S3 transmits a directory list with each COPY statement used by Snowflake, so reducing the number of files in each directory improves the performance of your COPY statements. You may even consider creating subfolders of 10-15 minute increments within the folders for each hour." --reducing the number of files in each directory improves the performance of your COPY statements. meaning more partition, better the performance.
+When staging regular data sets, we recommend partitioning the data into logical paths that include identifying details such as geographical location or other source identifiers, along with the date when the data was written.  Organizing your data files by path lets you copy any fraction of the partitioned data into Snowflake with a single command. This allows you to execute concurrent COPY statements that match a subset of files, taking advantage of parallel operations. https://docs.snowflake.com/en/user-guide/data-load-considerations-stage#organizing-data-by-path
+--------------------------------------------------
+
+--- Frage Nr. 514 (Richtig) ---
+Frage: What is the minimum Snowflake Edition that supports secure storage of Protected Health Information (PHI) data?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - seen this question before
+"Business Critical Edition, formerly known as Enterprise for Sensitive Data (ESD), offers even higher levels of data protection to support the needs of organizations with extremely sensitive data, particularly PHI data that must comply with HIPAA and HITRUST CSF regulations." https://docs.snowflake.com/en/user-guide/intro-editions
+C  https://docs.snowflake.com/en/user-guide/intro-editions#:~:text=enterprises%20and%20organizations.-,Business%20Critical%20Edition,-%C2%B6
+--------------------------------------------------
+
+--- Frage Nr. 515 (Richtig) ---
+Frage: What can a Snowflake user do to reduce queuing on a multi-cluster virtual warehouse?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/performance-query-warehouse-queue#options-for-reducing-queues
+C https://docs.snowflake.com/en/user-guide/performance-query-warehouse-queue
+--------------------------------------------------
+
+--- Frage Nr. 516 (Richtig) ---
+Frage: What should be used to show the status of partial data loads and loading errors?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A - straigtforward
+https://docs.snowflake.com/en/sql-reference/functions/copy_history#output
+A  https://docs.snowflake.com/en/sql-reference/functions/copy_history#:~:text=%2C%20Table%20Functions-,COPY_HISTORY,-This%20table%20function  And ChatGPT and Gemini give different answers!!!
+--------------------------------------------------
+
+--- Frage Nr. 517 (Richtig) ---
+Frage: Which object can be used with Secure Data Sharing?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C - the other 3 can be if they are SECURE, in this case they are not
+C  https://docs.snowflake.com/en/user-guide/data-sharing-intro#:~:text=Dynamic%20tables-,External%20tables,-Iceberg%20tables
+You can share the following Snowflake objects:  Databases Tables Dynamic tables External tables Iceberg tables Secure views Secure materialized views Secure user-defined functions (UDFs)
+--------------------------------------------------
+
+--- Frage Nr. 518 (Richtig) ---
+Frage: Which parameter can be set at the account level to set the minimum number of days for which Snowflake retains historical data in Time Travel?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct, A is at object level the other two simply don't do that
+MIN_DATA_RETENTION_TIME_IN_DAYS:  Used to set the minimum data retention period for retaining historical data for Time Travel operations.  https://docs.snowflake.com/en/sql-reference/parameters
+The parameter that can be set at the account level to set the minimum number of days for which Snowflake retains historical data in Time Travel is A. DATA_RETENTION_TIME_IN_DAYS. This parameter allows you to specify how long Snowflake retains the historical data, enabling you to access and query data from past states of tables within the specified time frame.
+--------------------------------------------------
+
+--- Frage Nr. 519 (Richtig) ---
+Frage: Which commands are restricted in owner's rights stored procedures? (Choose two.)
+Deine Antwort:     A, E
+Korrekte Antwort:  A, E
+
+Erklärung:
+AE is correct
+Owner’s rights stored procedures have several additional restrictions, besides the restrictions related to session variables and session parameters. These restrictions affect the following:  The built-in functions that can be called from inside a stored procedure.  Ability to execute ALTER USER statements.  Monitoring stored procedures at execution time.  SHOW and DESCRIBE commands.  The types of SQL statements that can be called from inside a stored procedure.
+A & E  https://docs.snowflake.com/en/developer-guide/stored-procedure/stored-procedures-rights#:~:text=SHOW%20and-,DESCRIBE,-commands.
+--------------------------------------------------
+
+--- Frage Nr. 520 (Richtig) ---
+Frage: What is the relationship between a Query Profile and a virtual warehouse?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A - nexerSnow explanation is great
+A correct
+It's crucial to monitor both local and remote disk spillage. In Snowflake, when a warehouse cannot fit an operation in memory, it starts spilling data first to the local disk of a warehouse node, and then to remote storage. This process, called disk spilling, leads to decreased performance and can be seen in the query profile as "Bytes spilled to local/remote storage."   https://www.chaosgenius.io/blog/snowflake-warehouse-sizes/
+--------------------------------------------------
+
+--- Frage Nr. 521 (Richtig) ---
+Frage: Which transformation is supported by a COPY INTO [table] command?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Option C is correct, other are not possible when using the COPY INTO statement https://docs.snowflake.com/en/user-guide/data-load-transform
+The COPY command supports: Column reordering column omission casts using a SELECT statement https://docs.snowflake.com/en/user-guide/data-load-transform
+--------------------------------------------------
+
+--- Frage Nr. 522 (Richtig) ---
+Frage: How does conditional data masking work in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+A. It selectively masks plain text data.
+
+While true that masking policies selectively mask data, this statement describes the general function of data masking, not specifically the "conditional" aspect. All masking is selective in who sees it unmasked versus masked.
+
+B. It selectively masks multiple columns.
+
+A single masking policy is applied to one column. To mask multiple columns, you would apply separate masking policies to each column. This option doesn't describe the "conditional" nature of the masking itself.
+
+C. It masks all values in a given column.
+
+This describes unconditional masking, where a column's values are always masked for users who don't have the necessary privileges to see the unmasked data. Conditional masking implies that the masking behavior changes based on a condition.
+
+D. It selectively masks a column value based on another column.
+
+This accurately describes a key aspect of conditional data masking. You can define a masking policy such that the value in one column (e.g., EMAIL) is masked only if a condition based on the value in another column (e.g., ACCOUNT_STATUS = 'INACTIVE' or AGE < 18) in the same row is met. This allows for very fine-grained control over data visibility. Conditions can also be based on the querying user's role, IP address, or current date/time.
+
+
+The final answer is  
+D
+​
+--------------------------------------------------
+
+--- Frage Nr. 523 (Falsch) ---
+Frage: If a virtual warehouse runs for 61 seconds, shuts down, and then restarts and runs for 30 seconds, for how many seconds is it billed?
+Deine Antwort:     C
+Korrekte Antwort:  D
+
+Erklärung:
+D - virtual warehouse are always billed for the entire minute after they are started even if they are shut down earlier
+D 121=61+60
+If a warehouse runs for 30 to 60 seconds, it is billed for 60 seconds.  If a warehouse runs for 61 seconds, it is billed for only 61 seconds.  If a warehouse runs for 61 seconds, shuts down, and then restarts and runs for less than 60 seconds, it is billed for 121 seconds (60 + 1 + 60).
+D is correct according to documentation: "If a warehouse runs for 30 to 60 seconds, it is billed for 60 seconds. If a warehouse runs for 61 seconds, it is billed for only 61 seconds. If a warehouse runs for 61 seconds, shuts down, and then restarts and runs for less than 60 seconds, it is billed for 121 seconds (60 + 1 + 60)." https://docs.snowflake.com/en/user-guide/warehouses-considerations#how-are-credits-charged-for-warehouses
+--------------------------------------------------
+
+--- Frage Nr. 524 (Richtig) ---
+Frage: What function, combined with the copy command, should be used to unload data from a relational table into a JSON file?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D should be ok
+correct
+D is correct: Unloading a relational table to JSON You can use the OBJECT_CONSTRUCT function combined with the COPY command to convert the rows in a relational table to a single VARIANT column and unload the rows into a file. https://docs.snowflake.com/en/user-guide/data-unload-considerations
+--------------------------------------------------
+
+--- Frage Nr. 525 (Richtig) ---
+Frage: What is the primary purpose of a directory table in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D is correct that's the purpose of directory tables
+A directory table is an implicit object layered on a stage that stores file-level metadata about the data files in the stage, similar conceptually to an external table You can query a directory table to retrieve a list of all the files on a stage. The query output contains information about each file, including the size, last modified timestamp, and the file URL Directory tables store data file metadata  https://docs.snowflake.com/en/user-guide/data-load-dirtablesThe key points are:
+--------------------------------------------------
+
+--- Frage Nr. 526 (Falsch) ---
+Frage: Which Snowflake table objects can be shared with other accounts? (Choose two.)
+Deine Antwort:     B, C, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+A. Temporary tables: Not listed as sharable objects in the provided text, and are inherently session-scoped.
+
+B. Permanent tables: Covered by "Tables" in the list. Can be shared.
+
+C. Transient tables: Covered by "Tables" in the list. Can be shared.
+
+D. External tables: Explicitly listed as a sharable object. Can be shared.
+
+E. User-Defined Table Functions (UDTFs): Covered by "User-defined functions (UDFs)". While UDTFs produce tabular results, they are classified as functions, not "table objects" in the same category as permanent, transient, or external tables which store or directly link to data.
+The final answer is B,C,D
+--------------------------------------------------
+
+--- Frage Nr. 527 (Richtig) ---
+Frage: Which metadata table will store the storage utilization information even for dropped tables?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics
+"This view (TABLE_STORAGE_METRICS) displays table-level storage utilization information, which is used to calculate the storage billing for each table in the account, including tables that have been dropped, but are still incurring storage costs."
+B  https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics
+--------------------------------------------------
+
+--- Frage Nr. 528 (Richtig) ---
+Frage: How is role hierarchy established in Snowflake?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is the principle of parent child
+"Granting a role to another role creates a “parent-child” relationship between the roles (also referred to as a role hierarchy)."
+C  https://docs.snowflake.com/en/sql-reference/sql/grant-role#:~:text=GRANT%20ROLE-,GRANT%20ROLE,-Assigns%20a%20role
+--------------------------------------------------
+
+--- Frage Nr. 529 (Richtig) ---
+Frage: What commands can be used to see what files are stored in a stage? (Choose two.)
+Deine Antwort:     A, C
+Korrekte Antwort:  A, C
+
+Erklärung:
+AC - both are the same command
+LIST, LS Returns a list of files that have been staged (i.e. uploaded from a local file system or unloaded from a table) in one of the following Snowflake stages:
+--------------------------------------------------
+

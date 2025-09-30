@@ -5,24 +5,34 @@ import string
 import datetime
 import json
 
-#sinnvoller Kommentar für gitttt
-
+# --- Globale Konstanten ---
+# Dateiname für die CSV-Fragen
+FRAGEN_DATEI = "questions.csv"
+# Dateiname zum Speichern der letzten Test-Konfiguration
 EINSTELLUNGEN_DATEI = "last_test_settings.json"
 
+# ANSI-Escape-Codes für die Terminal-Formatierung
+BOLD = '\033[1m'
+ITALIC = '\033[3m'
+RESET = '\033[0m'  # Setzt die Formatierung auf den Standard zurück
+
 def lade_letzte_einstellungen():
-    """Lädt die letzten Testeinstellungen aus einer JSON-Datei."""
+    """Lädt die letzten Testeinstellungen aus der JSON-Konfigurationsdatei."""
     if os.path.exists(EINSTELLUNGEN_DATEI):
         with open(EINSTELLUNGEN_DATEI, 'r', encoding='utf-8') as f:
             return json.load(f)
     return None
 
 def speichere_letzte_einstellungen(einstellungen):
-    """Speichert die aktuellen Testeinstellungen in einer JSON-Datei."""
+    """Speichert die aktuellen Testeinstellungen in der JSON-Konfigurationsdatei."""
     with open(EINSTELLUNGEN_DATEI, 'w', encoding='utf-8') as f:
         json.dump(einstellungen, f, indent=4)
 
 def lade_fragen_aus_csv(dateipfad):
-    """Lädt die Fragen aus der CSV-Datei und fügt die Original-Zeilennummer hinzu."""
+    """
+    Lädt die Fragen aus der angegebenen CSV-Datei.
+    Validiert jede Zeile, um Abstürze durch fehlerhafte Daten zu verhindern.
+    """
     fragen_liste = []
     if not os.path.exists(dateipfad):
         print(f"FEHLER: Die Datei '{dateipfad}' wurde nicht gefunden.")
@@ -31,16 +41,45 @@ def lade_fragen_aus_csv(dateipfad):
         with open(dateipfad, mode='r', encoding='utf-8') as csv_datei:
             csv_leser = csv.DictReader(csv_datei)
             for i, zeile in enumerate(csv_leser):
+                frage_kurz = zeile.get('Question', 'Unbekannte Frage')[:40] + '...'
+                zeilen_nr = i + 2
+
                 if zeile.get('Question') == 'Question' or not zeile.get('Question'):
                     continue
+                
                 optionen = [zeile[f"Answer Option {j}"].strip() for j in range(1, 16) if zeile.get(f"Answer Option {j}") and zeile[f"Answer Option {j}"].strip()]
-                korrekte_antworten = [s.strip() for s in zeile.get('Correct Response', '').split(',')]
+                korrekte_antworten_str = [s.strip() for s in zeile.get('Correct Response', '').split(',')]
+
+                if not optionen:
+                    print(f"WARNUNG: Zeile {zeilen_nr}: Frage '{frage_kurz}' wird übersprungen (keine Antwortoptionen).")
+                    continue
+                
+                if not korrekte_antworten_str or not korrekte_antworten_str[0]:
+                    print(f"WARNUNG: Zeile {zeilen_nr}: Frage '{frage_kurz}' wird übersprungen (keine korrekte Antwort angegeben).")
+                    continue
+
+                is_valid = True
+                for idx_str in korrekte_antworten_str:
+                    try:
+                        idx_int = int(idx_str)
+                        if not (1 <= idx_int <= len(optionen)):
+                            print(f"WARNUNG: Zeile {zeilen_nr}: Frage '{frage_kurz}' wird übersprungen (Index '{idx_int}' liegt außerhalb des Bereichs von {len(optionen)} Optionen).")
+                            is_valid = False
+                            break
+                    except (ValueError, TypeError):
+                        print(f"WARNUNG: Zeile {zeilen_nr}: Frage '{frage_kurz}' wird übersprungen (ungültiger Index '{idx_str}').")
+                        is_valid = False
+                        break
+                
+                if not is_valid:
+                    continue
+
                 fragen_liste.append({
-                    "nummer": i + 1,
+                    "nummer": zeilen_nr - 1,
                     "frage": zeile['Question'].strip(),
                     "typ": zeile['Question Type (multiple-choice or multi-select)'].strip(),
                     "optionen": optionen,
-                    "korrekt": korrekte_antworten,
+                    "korrekt": korrekte_antworten_str,
                     "erklaerung": zeile.get('Explanation', 'Keine Erklärung verfügbar.').strip()
                 })
     except Exception as e:
@@ -109,12 +148,10 @@ def schreibe_log_datei(protokoll, punkte, anzahl_fragen, einstellungen):
         start, ende = einstellungen['start_nr'], einstellungen['start_nr'] + einstellungen['anzahl'] - 1
         basename = f"Result_{datums_str}_{start}-{ende}"
     elif einstellungen['methode'] == 'random':
-        # GEÄNDERT: Seed an den Dateinamen anhängen, falls vorhanden
         basename = f"Result_{datums_str}_Random_{seed}" if seed else f"Result_{datums_str}_Random"
-    else:  # last_test
+    else:
         original_methode = einstellungen.get('original_methode', 'sorted')
         if original_methode == 'random':
-            # GEÄNDERT: Seed auch bei Wiederholungen an den Dateinamen anhängen
             basename = f"Result_{datums_str}_Random_{seed}" if seed else f"Result_{datums_str}_Random"
         else:
             start, ende = einstellungen['start_nr'], einstellungen['start_nr'] + einstellungen['anzahl'] - 1
@@ -153,30 +190,47 @@ def schreibe_log_datei(protokoll, punkte, anzahl_fragen, einstellungen):
     print(f"\nEin detailliertes Protokoll wurde in der Datei '{dateiname}' gespeichert.")
 
 def starte_pruefung(fragen, einstellungen, dateiname):
-    """Führt die Prüfung durch und gibt den erreichten Punktestand zurück."""
+    """
+    Führt die Hauptschleife der Prüfung durch, wertet Antworten aus und gibt den Punktestand zurück.
+    """
     punkte = 0
     protokoll = []
     print(f"\n--- Prüfung im '{einstellungen['modus'].upper()}' Modus startet! Es gibt {len(fragen)} Fragen. ---")
 
     for i, frage_objekt in enumerate(fragen):
-        print("\n" + "=" * 50 + f"\nFrage {i + 1} von {len(fragen)} (Original-Nr. {frage_objekt['nummer']}):")
+        print("\n" + "=" * 50 + f"\n{BOLD}Frage {i + 1} von {len(fragen)} (Original-Nr. {frage_objekt['nummer']}):{RESET}")
         print(frage_objekt['frage'] + "\n" + "-" * 20)
         
         buchstaben_optionen = list(string.ascii_uppercase)[:len(frage_objekt['optionen'])]
         for buchstabe, option in zip(buchstaben_optionen, frage_objekt['optionen']):
             print(f"  {buchstabe}) {option}")
         
-        hinweis = " (Mehrfachauswahl, z.B. A, C): " if frage_objekt['typ'] == 'multi-select' else " (Eine Auswahl): "
-        user_antwort_str = input(f"Deine Antwort{hinweis}").upper()
-        user_auswahl = sorted([s.strip() for s in user_antwort_str.split(',')])
-        korrekte_buchstaben = sorted([buchstaben_optionen[int(idx) - 1] for idx in frage_objekt['korrekt']])
+        print("-" * 20)
+
+        user_auswahl = []
+        for attempt in range(3):
+            hinweis = " (Mehrfachauswahl, z.B. A, C): " if frage_objekt['typ'] == 'multi-select' else " (Eine Auswahl): "
+            user_antwort_str = input(f"Deine Antwort{hinweis}").upper()
+            
+            cleaned_input_for_validation = user_antwort_str.replace(" ", "").replace(",", "")
+            allowed_chars_for_validation = "".join(buchstaben_optionen)
+            
+            if all(char in allowed_chars_for_validation for char in cleaned_input_for_validation):
+                user_auswahl = sorted([s.strip() for s in user_antwort_str.split(',') if s.strip()])
+                break
+            else:
+                remaining_attempts = 2 - attempt
+                if remaining_attempts > 0:
+                    print(f"!! Ungültige Eingabe. Bitte nur Buchstaben von A bis {buchstaben_optionen[-1]} und Kommas verwenden. Du hast noch {remaining_attempts} Versuch(e).")
+                else:
+                    print("!! Zu viele ungültige Eingaben. Die Antwort wird als falsch gewertet.")
         
+        korrekte_buchstaben = sorted([buchstaben_optionen[int(idx) - 1] for idx in frage_objekt['korrekt']])
         ist_korrekt = (user_auswahl == korrekte_buchstaben)
+        
         protokoll.append({
-            "frage_objekt": frage_objekt,
-            "deine_antwort": user_auswahl,
-            "korrekte_antwort": korrekte_buchstaben,
-            "ist_korrekt": ist_korrekt
+            "frage_objekt": frage_objekt, "deine_antwort": user_auswahl,
+            "korrekte_antwort": korrekte_buchstaben, "ist_korrekt": ist_korrekt
         })
 
         if ist_korrekt:
@@ -185,10 +239,10 @@ def starte_pruefung(fragen, einstellungen, dateiname):
                 print("✅ Richtig!")
         else:
             if einstellungen['modus'] == "practice":
-                print(f"❌ Falsch. Richtig wäre: {', '.join(korrekte_buchstaben)}")
+                print(f"❌ Falsch. Richtig wäre: {BOLD}{', '.join(korrekte_buchstaben)}{RESET}")
         
         if einstellungen['modus'] == "practice":
-            print("\n--- Erklärung ---\n" + frage_objekt['erklaerung'])
+            print(f"\n--- Erklärung ---\n{ITALIC}" + frage_objekt['erklaerung'] + f"{RESET}")
             while True:
                 aktion = input("\nDrücke 'c' zum Ändern der Erklärung, oder Enter zum Fortfahren: ").lower()
                 if aktion == 'c':
@@ -211,10 +265,20 @@ def starte_pruefung(fragen, einstellungen, dateiname):
             print("\n\n--- Überprüfung der falschen Antworten ---")
             for fehler in falsche_antworten:
                 obj = fehler["frage_objekt"]
-                print("\n" + "=" * 50 + f"\nFRAGE (Nr. {obj['nummer']}): {obj['frage']}")
-                print(f"  Deine Antwort:     {', '.join(fehler['deine_antwort'])}")
-                print(f"  Korrekte Antwort:  {', '.join(fehler['korrekte_antwort'])}")
-                print("\n  Erklärung:\n" + obj['erklaerung'])
+                print("\n" + "=" * 50 + f"\n{BOLD}FRAGE (Nr. {obj['nummer']}):{RESET} {obj['frage']}")
+                
+                # --- HIER IST DIE ÄNDERUNG ---
+                print("-" * 20)
+                # Generiere die Buchstaben für die Optionen erneut
+                buchstaben_fuer_optionen = list(string.ascii_uppercase)[:len(obj['optionen'])]
+                for buchstabe, option in zip(buchstaben_fuer_optionen, obj['optionen']):
+                    print(f"  {buchstabe}) {option}")
+                print("-" * 20)
+                # -----------------------------
+
+                print(f"  Deine Antwort:     {BOLD}{', '.join(fehler['deine_antwort'])}{RESET}")
+                print(f"  Korrekte Antwort:  {BOLD}{', '.join(fehler['korrekte_antwort'])}{RESET}")
+                print(f"\n  {BOLD}Erklärung:{RESET}\n{ITALIC}" + obj['erklaerung'] + f"{RESET}")
         else:
             print("\n🎉 Herzlichen Glückwunsch! Alle Fragen wurden richtig beantwortet! 🎉")
     
@@ -222,7 +286,9 @@ def starte_pruefung(fragen, einstellungen, dateiname):
     return punkte
 
 if __name__ == "__main__":
-    dateiname = "questions.csv"
+    os.system('') 
+    
+    dateiname = FRAGEN_DATEI
     print("--- Willkommen zum Snowflake-Prüfungssimulator ---")
     alle_fragen = lade_fragen_aus_csv(dateiname)
     
@@ -248,36 +314,23 @@ if __name__ == "__main__":
         if not einstellungen:
             while True:
                 methode_wahl = input("\nWie sollen die Fragen ausgewählt werden?\n  1) Sorted (aus einer Spanne)\n  2) Random\nWahl: ")
-                if methode_wahl == "1":
-                    einstellungen['methode'] = 'sorted'
-                    break
-                elif methode_wahl == "2":
-                    einstellungen['methode'] = 'random'
-                    break
-                else:
-                    print("Ungültige Wahl.")
+                if methode_wahl == "1": einstellungen['methode'] = 'sorted'; break
+                elif methode_wahl == "2": einstellungen['methode'] = 'random'; break
+                else: print("Ungültige Wahl.")
             
             while True:
                 modus_wahl = input("\nWähle einen Modus:\n  1) Practice (Feedback nach jeder Frage)\n  2) Exam (Auswertung am Ende)\nWahl: ")
-                if modus_wahl == "1":
-                    einstellungen['modus'] = 'practice'
-                    break
-                elif modus_wahl == "2":
-                    einstellungen['modus'] = 'exam'
-                    break
-                else:
-                    print("Ungültige Wahl.")
+                if modus_wahl == "1": einstellungen['modus'] = 'practice'; break
+                elif modus_wahl == "2": einstellungen['modus'] = 'exam'; break
+                else: print("Ungültige Wahl.")
 
             while True:
                 try:
                     anzahl_str = input(f"\nWie viele Fragen möchtest du? (Enter für alle {max_fragen}): ")
                     einstellungen['anzahl'] = int(anzahl_str) if anzahl_str else max_fragen
-                    if 0 < einstellungen['anzahl'] <= max_fragen:
-                        break
-                    else:
-                        print(f"Bitte eine Zahl zwischen 1 und {max_fragen} eingeben.")
-                except ValueError:
-                    print("Ungültige Eingabe.")
+                    if 0 < einstellungen['anzahl'] <= max_fragen: break
+                    else: print(f"Bitte eine Zahl zwischen 1 und {max_fragen} eingeben.")
+                except ValueError: print("Ungültige Eingabe.")
 
             einstellungen['seed'] = None
             if einstellungen['methode'] == 'sorted':
@@ -286,16 +339,12 @@ if __name__ == "__main__":
                     try:
                         start_nr = int(input(f"Gib die Start-Nummer an (1 bis {max_start}): "))
                         if 1 <= start_nr <= max_start:
-                            einstellungen['start_nr'] = start_nr
-                            break
-                        else:
-                            print(f"Start-Nummer muss zwischen 1 und {max_start} liegen.")
-                    except ValueError:
-                        print("Ungültige Zahl.")
+                            einstellungen['start_nr'] = start_nr; break
+                        else: print(f"Start-Nummer muss zwischen 1 und {max_start} liegen.")
+                    except ValueError: print("Ungültige Zahl.")
             elif einstellungen['methode'] == 'random':
                 seed_input = input("Gib einen Seed (Zahl oder Text) ein (Enter für zufällig): ")
-                if seed_input:
-                    einstellungen['seed'] = seed_input
+                if seed_input: einstellungen['seed'] = seed_input
 
         seed = einstellungen.get('seed')
         if seed:
@@ -304,14 +353,17 @@ if __name__ == "__main__":
         if einstellungen.get('original_methode', einstellungen['methode']) == 'sorted':
             start_index = einstellungen['start_nr'] - 1
             fragen_fuer_runde = alle_fragen[start_index : start_index + einstellungen['anzahl']]
-        else:  # random
+        else:
             random.shuffle(alle_fragen)
             fragen_fuer_runde = alle_fragen[:einstellungen['anzahl']]
         
         punkte = starte_pruefung(fragen_fuer_runde, einstellungen, dateiname)
         
-        if einstellungen['methode'] != 'last_test':
-            einstellungen['letzter_score'] = {'punkte': punkte, 'anzahl': len(fragen_fuer_runde)}
-            speichere_letzte_einstellungen(einstellungen)
+        einstellungen['letzter_score'] = {'punkte': punkte, 'anzahl': len(fragen_fuer_runde)}
+        if einstellungen.get('original_methode'):
+            einstellungen['methode'] = einstellungen['original_methode']
+            del einstellungen['original_methode']
+        
+        speichere_letzte_einstellungen(einstellungen)
 
     input("\nDrücke Enter, um das Programm zu schließen.")

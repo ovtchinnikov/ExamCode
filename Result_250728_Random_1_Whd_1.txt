@@ -1,0 +1,540 @@
+==================================================
+### Prüfungsprotokoll ###
+Datum: 28.07.2025, 16:16:51 Uhr
+Modus: Exam
+Auswahl: Wiederholung (random) (50 Fragen)
+Random Seed: 1
+
+--- Endergebnis ---
+Punkte: 47 von 50
+Erfolgsquote: 94.00%
+==================================================
+
+--- Frage Nr. 168 (Richtig) ---
+Frage: Which of the following significantly improves the performance of selective point lookup queries on a table?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+The search optimization service aims to significantly improve the performance of certain types of queries on tables, including:  Selective point lookup queries on tables. A point lookup query returns only one or a small number of distinct rows. Use case examples include:  Business users who need fast response times for critical dashboards with highly selective filters.  Data scientists who are exploring large data volumes and looking for specific subsets of data.  Data applications retrieving a small set of results based on an extensive set of filtering predicates.
+https://docs.snowflake.com/en/user-guide/search-optimization-service.html#understanding-the-search-optimization-service
+--------------------------------------------------
+
+--- Frage Nr. 1059 (Richtig) ---
+Frage: Which URL type allows users to access unstructured data without authenticating into Snowflake or passing an authorization token?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Pre-signed URLs are used to download or access files, via a web browser for example, without authenticating into Snowflake or passing an authorization token. These URLs are ideal for business intelligence applications or reporting tools that need to display the unstructured file contents.
+https://docs.snowflake.com/en/sql-reference/functions/get_presigned_url.html
+--------------------------------------------------
+
+--- Frage Nr. 120 (Richtig) ---
+Frage: The Information Schema and Account Usage Share provide storage information for which of the following objects? (Choose three.)
+Deine Antwort:     B, C, D
+Korrekte Antwort:  B, C, D
+
+Erklärung:
+select * from snowflake.information_schema.views where table_name like '%STORAGE%'  and table_schema in ('ACCOUNT_USAGE','INFORMATION_SCHEMA');  TABLE_CATALOG TABLE_SCHEMA TABLE_NAME SNOWFLAKE ACCOUNT_USAGE DATABASE_STORAGE_USAGE_HISTORY SNOWFLAKE ACCOUNT_USAGE STAGE_STORAGE_USAGE_HISTORY SNOWFLAKE ACCOUNT_USAGE STORAGE_USAGE SNOWFLAKE ACCOUNT_USAGE TABLE_STORAGE_METRICS SNOWFLAKE INFORMATION_SCHEMA TABLE_STORAGE_METRICS
+We can get User info too. The Account Usage view can be used to query a list of all users in the account. The data is retained for 365 days (1 year).  https://docs.snowflake.com/en/sql-reference/account-usage/users.html
+--------------------------------------------------
+
+--- Frage Nr. 750 (Richtig) ---
+Frage: In which Snowflake layer does Snowflake reorganize data into its internal optimized, compressed, columnar format?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Database storage layer
+correct
+--------------------------------------------------
+
+--- Frage Nr. 1173 (Richtig) ---
+Frage: What is the Snowflake multi-clustering feature for virtual warehouses used for?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+c - correct
+C - correct
+C. To improve concurrency for users and queries
+--------------------------------------------------
+
+--- Frage Nr. 148 (Richtig) ---
+Frage: Which of the following is a data tokenization integration partner?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+The following partners facilitate external tokenization in Snowflake. To use these partner integrations, follow the instructions in the partner documentation or contact the partner to begin the configuration process:  ALTR  Baffle  Fortanix  MicroFocus CyberRes Voltage  Protegrity  Privacera  SecuPI  Skyflow
+ALTR  Baffle  Comforte  Fortanix  MicroFocus CyberRes Voltage  Protegrity  Privacera  SecuPI  Skyflow  Spring Labs  https://docs.snowflake.com/en/user-guide/security-column-ext-token-use
+--------------------------------------------------
+
+--- Frage Nr. 1001 (Richtig) ---
+Frage: What privilege should a user be granted to change permissions for new objects in a managed access schema?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+It should be A because as both a & c answer are correct, the 'minimum' impacting option is Ownership
+https://docs.snowflake.com/en/sql-reference/sql/create-schema CREATE SCHEMA  WITH MANAGED ACCESS Specifies a managed schema. Managed access schemas centralize privilege management with the schema owner.  In regular schemas, the owner of an object (i.e. the role that has the OWNERSHIP privilege on the object) can grant further privileges on their objects to other roles. In managed schemas, the schema owner manages all privilege grants, including future grants, on objects in the schema. Object owners retain the OWNERSHIP privileges on the objects; however, only the schema owner can manage privilege grants on the objects.
+--------------------------------------------------
+
+--- Frage Nr. 198 (Richtig) ---
+Frage: What tasks can be completed using the COPY command? (Choose two.)
+Deine Antwort:     C, D
+Korrekte Antwort:  C, D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/data-load-transform.html
+--------------------------------------------------
+
+--- Frage Nr. 285 (Richtig) ---
+Frage: Which data type can be used to store geospatial data in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+Snowflake provides the following data types for geospatial data: The GEOGRAPHY data type, which models Earth as though it were a perfect sphere. The GEOMETRY data type, which represents features in a planar (Euclidean, Cartesian) coordinate system.
+--------------------------------------------------
+
+--- Frage Nr. 1138 (Richtig) ---
+Frage: Where can a Snowflake user find the query history in Snowsight?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+I think currently (3/2024) it's under "Monitoring" page. "Activity" page doesn't exist.
+Answer B https://docs.snowflake.com/en/user-guide/ui-snowsight-activity.html
+--------------------------------------------------
+
+--- Frage Nr. 562 (Richtig) ---
+Frage: How can a user MINIMIZE Continuous Data Protection costs when using large, high-churn, dimension tables?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A - transient table are basically the same as regular table but do not utilize fail safe hence reducing the storage cost involved with them https://docs.snowflake.com/en/user-guide/tables-temp-transient#transient-tables
+For large, high-churn dimension tables that incur overly-excessive CDP costs, the solution is to create these tables as transient with zero Time Travel retention (i.e. DATA_RETENTION_TIME_IN_DAYS=0) and then copy these tables on a periodic basis into a permanent table.
+https://docs.snowflake.com/en/user-guide/tables-storage-considerations
+--------------------------------------------------
+
+--- Frage Nr. 990 (Richtig) ---
+Frage: A user needs to create a materialized view in the schema MYDB.MYSCHEMA.
+
+Which statements will provide this access?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A is the correct answer https://docs.snowflake.com/en/sql-reference/sql/grant-privilege.html#examples
+in all commands it is missing the keyword GRANT before "CREATE MATERIALIZED VIEW" The answer A is correct but the answer D is correct too because the keyword ROLE is  optional:  https://docs.snowflake.com/en/sql-reference/sql/grant-privilege.html TO [ ROLE ] <role_name> [ WITH GRANT OPTION ]  So the question must allow for multiple answers.
+--------------------------------------------------
+
+--- Frage Nr. 765 (Richtig) ---
+Frage: A complex SQL query involving eight tables with joins is taking a while to execute. The Query Profile shows that all partitions are being scanned.
+
+What is causing the query performance issue?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+correct
+I think the answer is C.  https://docs.snowflake.com/en/user-guide/ui-query-profile#exploding-joins
+--------------------------------------------------
+
+--- Frage Nr. 284 (Richtig) ---
+Frage: What are the benefits of the replication feature in Snowflake? (Choose two.)
+Deine Antwort:     A, D
+Korrekte Antwort:  A, D
+
+Erklärung:
+Replication is not a security model infact it increases risk exposure, its for business continuity.
+https://www.snowflake.com/trending/what-is-data-replication#:~:text=DATABASE%20REPLICATION%20SOLUTIONS&text=Customers%20using%20Snowflake%20Standard%20edition,portability%20to%20facilitate%20account%20migrations  so I think D and E are correct
+--------------------------------------------------
+
+--- Frage Nr. 1113 (Richtig) ---
+Frage: Which clustering indicator will show if a large table in Snowflake will benefit from explicitly defining a clustering key?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Clustering Depth The clustering depth for a populated table measures the average depth (1 or greater) of the overlapping micro-partitions for specified columns in a table. The smaller the average depth, the better clustered the table is with regards to the specified columns.  Clustering depth can be used for a variety of purposes, including:  Monitoring the clustering “health” of a large table, particularly over time as DML is performed on the table.  Determining whether a large table would benefit from explicitly defining a clustering key.
+https://docs.snowflake.com/en/user-guide/tables-clustering-micropartitions.html#label-clustering-depth
+--------------------------------------------------
+
+--- Frage Nr. 1148 (Richtig) ---
+Frage: A Query Profile shows a UnionAll operator with an extra Aggregate operator on top.
+
+What does this signify?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+UNION Without ALL In SQL, it is possible to combine two sets of data with either UNION or UNION ALL constructs. The difference between them is that UNION ALL simply concatenates inputs, while UNION does the same, but also performs duplicate elimination.  A common mistake is to use UNION when the UNION ALL semantics are sufficient. These queries show in Query Profile as a UnionAll operator with an extra Aggregate operator on top (which performs duplicate elimination).
+https://docs.snowflake.com/en/user-guide/ui-query-profile
+--------------------------------------------------
+
+--- Frage Nr. 34 (Richtig) ---
+Frage: True or False: A third-party tool that supports standard JDBC or ODBC but has no Snowflake-specific driver will be unable to connect to Snowflake.
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+False.  A third-party tool that supports standard JDBC or ODBC can connect to Snowflake even without a Snowflake-specific driver. Snowflake provides JDBC and ODBC connectors that adhere to the standard JDBC and ODBC interfaces, allowing third-party tools to establish a connection to Snowflake using these standard protocols.  The Snowflake JDBC and ODBC connectors act as bridges between the third-party tools and the Snowflake service, enabling communication and data exchange. As long as the third-party tool supports JDBC or ODBC, it can utilize the Snowflake connectors to connect to Snowflake and interact with the data warehouse.  This approach ensures compatibility and interoperability with a wide range of tools and applications that support JDBC or ODBC, making it easier to integrate Snowflake into existing ecosystems or use preferred third-party tools for data analysis, reporting, or other purposes.
+Answer is B False:  E.g. JDBC:  https://docs.snowflake.com/en/user-guide/jdbc.html  Snowflake provides a JDBC type 4 driver that supports core JDBC functionality. The JDBC driver must be installed in a 64-bit environment and requires Java 1.8 (or higher). The driver can be used with most client tools/applications that support JDBC for connecting to a database server.
+--------------------------------------------------
+
+--- Frage Nr. 345 (Richtig) ---
+Frage: Which common query problems are identified by the Query Profile? (Choose two.)
+Deine Antwort:     B, D
+Korrekte Antwort:  B, D
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/ui-query-profile#statistics B Pruning and D Spilling  Please stop quoting Chat GPT without verifying
+Choose two. So best two. From https://docs.snowflake.com/en/user-guide/ui-query-profile. Pruning - information on the effects of table pruning. Spilling — information about disk usage for operations where intermediate results do not fit in memory.
+B. Inefficient pruning E. Object does not exist or not authorized  Explanation:  A Query Profile in Snowflake is designed to provide insights into the performance characteristics of a specific query. Common query problems that can be identified by the Query Profile include:  B. Inefficient pruning: It can reveal whether pruning (filtering) of data during query execution is being performed efficiently. Inefficient pruning may result in the query scanning more data than necessary.  E. Object does not exist or not authorized: The Query Profile can identify issues related to missing or unauthorized objects in the query. This includes situations where tables or columns referenced in the query do not exist or the user does not have the necessary privileges.  Syntax errors (A), ambiguous column names (C), and queries too large to fit in memory (D) are typically identified during the parsing and compilation phases and may not be specifically addressed by the Query Profile.
+--------------------------------------------------
+
+--- Frage Nr. 111 (Richtig) ---
+Frage: True or False: During data unloading, only JSON and CSV files can be compressed.
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Unloading supports structured formatting CSV format and unstructured JSON and Parquet formats only. Hence FALSE is correct answer.
+During data loading, compression can be enabled for CSV, JSON PARQUET, AVRO, XML type files. ref: https://docs.snowflake.com/en/sql-reference/sql/create-file-format
+--------------------------------------------------
+
+--- Frage Nr. 979 (Richtig) ---
+Frage: What general guideline does Snowflake recommend when setting the auto-suspension time limit?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+B is correct. https://docs.snowflake.com/en/user-guide/warehouses-considerations#automating-warehouse-suspension
+If you enable auto-suspend, we recommend setting it to a low value (e.g. 5 or 10 minutes or less) because Snowflake utilizes per-second billing. This will help keep your warehouses from running (and consuming credits) when not in use.  https://docs.snowflake.com/en/user-guide/warehouses-considerations#automating-warehouse-suspension
+--------------------------------------------------
+
+--- Frage Nr. 1164 (Richtig) ---
+Frage: What is the recommended way to obtain a cloned table with the same grants as the source table?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+CLONE command syntax supports the COPY GRANTS parameter. When the COPY GRANTS parameter is specified in a CREATE TABLE statement, the create operation copies all privileges, except OWNERSHIP, from the source table to the new table. The same behavior is true for other CREATE commands that support the COPY GRANTS clause.
+A https://docs.snowflake.com/en/user-guide/object-clone#:~:text=When%20the%20COPY%20GRANTS%20parameter%20is%20specified%20in%20a%20CREATE%20TABLE%20statement%2C%20the%20create%20operation%20copies%20all%20privileges%2C%20except%20OWNERSHIP%2C%20from%20the%20source%20table%20to%20the%20new%20table.
+--------------------------------------------------
+
+--- Frage Nr. 412 (Richtig) ---
+Frage: A user creates a stage using the following command:
+
+
+CREATE STAGE mystage -
+DIRECTORY = (ENABLE = TRUE)
+FILE_FORMAT = myformat;
+
+What will be the outcome?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+The below command creates a directory table for an internal stage with auto refresh  https://docs.snowflake.com/en/user-guide/data-load-dirtables-auto  CREATE STAGE my_int_stage  DIRECTORY = (  ENABLE = TRUE  AUTO_REFRESH = TRUE  );
+Answer is B. https://docs.snowflake.com/en/user-guide/data-load-dirtables-manage#label-directory-table-refreshes Directory tables on internal stages require manual metadata refreshes. This command creates an internal Snowflake stage since it doesn't specify an external cloud storage location. I ran this command in Snowflake and it was valid and using SHOW STAGES; I validated that it was an internal stage, so the answer is B
+B. https://docs.snowflake.com/en/user-guide/data-load-dirtables-manage "Directory tables on internal stages require manual metadata refreshes."  https://docs.snowflake.com/en/user-guide/data-load-dirtables-manage#label-directory-table-auto-refreshes "You can automatically refresh the metadata for a directory table by using the event messaging service for your cloud storage service."
+--------------------------------------------------
+
+--- Frage Nr. 910 (Falsch) ---
+Frage: Based on Snowflake recommendations, when creating a hierarchy of custom roles, the top-most custom role should be assigned to which role?
+Deine Antwort:     A
+Korrekte Antwort:  C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/security-access-control-overview#custom-roles  When creating roles that will serve as the owners of securable objects in the system, Snowflake recommends creating a hierarchy of custom roles, with the top-most custom role assigned to the system role SYSADMIN.
+correct
+correct answer is C https://community.snowflake.com/s/article/Quickly-Visualize-Snowflake-s-Roles-Grants-and-Privileges
+--------------------------------------------------
+
+--- Frage Nr. 534 (Falsch) ---
+Frage: What is an advantage of using database roles instead of granting privileges on objects directly to a share in Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  C
+
+Erklärung:
+But instead granting the shared database role allows the user to access only the subset of shared objects granted to the database role. The shared Database roles allow different groups of users in a data consumer account to access different subsets of the shared objects. https://community.snowflake.com/s/article/How-to-use-Database-Roles-in-a-Data-Share
+--------------------------------------------------
+
+--- Frage Nr. 142 (Richtig) ---
+Frage: When reviewing a query profile, what is a symptom that a query is too large to fit into the memory?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+I agree with Answer D, if query spilling happens , query processing engine start saving the data to local disk if this is not sufficient then it start saving the data to remote disk, this process significantly impact query performance, the solution is use larger size warehouse.
+For some operations (e.g. duplicate elimination for a huge data set), the amount of memory available for the compute resources used to execute the operation might not be sufficient to hold intermediate results. As a result, the query processing engine will start *spilling* the data to local disk. If the local disk space is not sufficient, the spilled data is then saved to remote disks. https://docs.snowflake.com/en/user-guide/ui-query-profile.html#queries-too-large-to-fit-in-memory
+--------------------------------------------------
+
+--- Frage Nr. 1022 (Richtig) ---
+Frage: A data provider wants to share data with a consumer who does not have a Snowflake account. The provider creates a reader account for the consumer following these steps:
+
+1. Created a user called "CONSUMER"
+2. Created a database to hold the share and an extra-small warehouse to query the data
+3. Granted the role PUBLIC the following privileges: Usage on the warehouse, database, and schema, and SELECT on all the objects in the share
+
+Based on this configuration what is true of the reader account?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Answer is B: https://docs.snowflake.com/en/user-guide/data-sharing-reader-create.html#overview
+the user has not a snowflake account, so the user compute will be billed to provider accoutn
+--------------------------------------------------
+
+--- Frage Nr. 278 (Richtig) ---
+Frage: A PUT command can be used to stage local files from which Snowflake interface?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+correct answer
+PUT command Usage  The command cannot be executed from the Worksheets page in the Snowflake web interface; instead, use the SnowSQL client to upload data files, or check the documentation for the specific Snowflake client to verify support for this command. https://roboquery.com/app/syntax-put-command-snowflake
+--------------------------------------------------
+
+--- Frage Nr. 406 (Richtig) ---
+Frage: What are potential impacts of storing non-native values like dates and timestamps in a VARIANT column in Snowflake?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+Non-native values such as dates and timestamps are stored as strings when loaded into a VARIANT column, so operations on these values could be slower and also consume more space than when stored in a relational column with the corresponding data type.
+https://docs.snowflake.com/en/sql-reference/data-types-semistructured
+--------------------------------------------------
+
+--- Frage Nr. 99 (Richtig) ---
+Frage: True or False: You can resize a Virtual Warehouse while queries are running.
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+False. You cannot resize a Virtual Warehouse in Snowflake while queries are running. You must first pause or terminate any running queries before resizing the Virtual Warehouse.
+https://docs.snowflake.com/en/user-guide/warehouses-tasks.html
+--------------------------------------------------
+
+--- Frage Nr. 1086 (Richtig) ---
+Frage: Which file formats are supported for unloading data from Snowflake? (Choose two.)
+Deine Antwort:     B, E
+Korrekte Antwort:  B, E
+
+Erklärung:
+BE are correct
+Delimited files (CSV, TSV, etc.) Any valid delimiter is supported; default is comma (i.e. CSV). JSON Parquet https://docs.snowflake.com/en/user-guide/intro-summary-unloading#output-data-file-details
+https://docs.snowflake.com/en/user-guide/intro-summary-unloading.html#output-data-file-details
+CSV, JSON, Parquet
+--------------------------------------------------
+
+--- Frage Nr. 986 (Falsch) ---
+Frage: Which of the following Snowflake objects can be shared using a secure share? (Choose two.)
+Deine Antwort:     D, E
+Korrekte Antwort:  A, D
+
+Erklärung:
+The following Snowflake database objects can be shared:  Tables External tables Secure views Secure materialized views Secure UDFs  https://docs.snowflake.com/en/user-guide/data-sharing-intro.html#introduction-to-secure-data-sharing
+D&E https://docs.snowflake.com/en/user-guide/data-sharing-intro.html#introduction-to-secure-data-sharing
+--------------------------------------------------
+
+--- Frage Nr. 462 (Richtig) ---
+Frage: Which query metric can be used to monitor the health of a large table?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+The key metric for monitoring the “health” of a large table in Snowflake is clustering depth. Clustering depth measures the average number of micro‑partition overlaps for the specified clustering key (or any set of columns), and a lower value indicates more effective clustering and thus better query pruning and performance. Tracking clustering depth over time as DML operations occur helps you detect when a table’s physical data layout degrades and may require reclustering.
+--------------------------------------------------
+
+--- Frage Nr. 468 (Richtig) ---
+Frage: Which Query Profile operator provides information on pruning efficiency?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A. TableScan: This operator represents the action of reading data from a Snowflake table. Snowflake's architecture, based on micro-partitions and automatic clustering, allows for significant pruning. The Query Profile for a TableScan operator will show metrics such as:
+
+Partitions scanned: The actual number of micro-partitions that were read. Partitions total: The total number of micro-partitions that comprise the table. The ratio of "Partitions scanned" to "Partitions total" directly indicates the pruning efficiency. A low ratio means high pruning efficiency.
+--------------------------------------------------
+
+--- Frage Nr. 261 (Richtig) ---
+Frage: What is the default Time Travel retention period?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+No tasks are required to enable Time Travel. It is automatically enabled with the standard, 1-day retention period. However, you may wish to upgrade to Snowflake Enterprise Edition to enable configuring longer data retention periods of up to 90 days for databases, schemas, and tables.
+default of 1 day https://docs.snowflake.com/en/user-guide/data-time-travel.html#data-retention-period
+--------------------------------------------------
+
+--- Frage Nr. 642 (Richtig) ---
+Frage: A single cluster virtual warehouse has no free resources.
+
+What will happen to new queries that are run against this warehouse?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+When there is only single cluster virtual warehouse , it can not SCALE and hence new queries need to wait in the Queue
+--------------------------------------------------
+
+--- Frage Nr. 472 (Richtig) ---
+Frage: Which type of query would benefit from enabling the query acceleration service on the virtual warehouse?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+It is not D. In docs.snowflake, there is exactly the text from Answer C. My answer is C
+--------------------------------------------------
+
+--- Frage Nr. 35 (Richtig) ---
+Frage: True or False: It is possible to load data into Snowflake without creating a named File Format object.
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+True. Snowflake supports loading data without creating a named File Format object. Snowflake provides built-in file formats that can be used to load data without the need to create a file format object explicitly.  For example, to load a CSV file, you can use the built-in CSV file format by simply specifying the FILE_FORMAT option as CSV in the COPY INTO command. This allows you to quickly load data without the overhead of creating a named file format object.       Send a message...
+https://docs.snowflake.com/en/user-guide/data-load-external-tutorial-create-file-format
+--------------------------------------------------
+
+--- Frage Nr. 672 (Richtig) ---
+Frage: Which privileges are required for a user to restore an object? (Choose two.)
+Deine Antwort:     B, E
+Korrekte Antwort:  B, E
+
+Erklärung:
+Similar to dropping an object, a user must have OWNERSHIP privileges for an object to restore it. In addition, the user must have CREATE privileges on the object type for the database or schema where the dropped object will be restored. https://docs.snowflake.com/en/user-guide/data-time-travel
+Similar to dropping an object, a user must have OWNERSHIP privileges for an object to restore it. In addition, the user must have CREATE privileges on the object type for the database or schema where the dropped object will be restored.
+https://docs.snowflake.com/en/user-guide/data-time-travel#:~:text=Similar%20to%20dropping%20an%20object%2C%20a%20user%20must%20have%20OWNERSHIP%20privileges%20for%20an%20object%20to%20restore%20it.%20In%20addition%2C%20the%20user%20must%20have%20CREATE%20privileges%20on%20the%20object%20type%20for%20the%20database%20or%20schema%20where%20the%20dropped%20object%20will%20be%20restored.
+--------------------------------------------------
+
+--- Frage Nr. 883 (Richtig) ---
+Frage: Which objects will incur storage costs associated with Fail-safe?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B correct - https://docs.snowflake.com/en/user-guide/cost-understanding-data-storage#:~:text=Files%20staged%20for%20bulk%20data%20loading%2Funloading%20%28stored%20compressed,deleted%20in%20the%20table%20that%20owns%20the%20clones.
+--------------------------------------------------
+
+--- Frage Nr. 899 (Richtig) ---
+Frage: A Snowflake user needs to import a JSON file larger than 16 MB.
+
+What file format option could be used?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+C is correct
+The correct answer is C.  strip_outer_array = true will remove the outer array structure and copy the file into multiple table rows instead of row. (the limitation for table rows is max 16MB) with this solution it will be fine.  https://docs.snowflake.com/en/user-guide/data-load-considerations-prepare#semi-structured-data-size-limitations
+C correct - https://docs.snowflake.com/en/user-guide/data-load-considerations-prepare
+--------------------------------------------------
+
+--- Frage Nr. 805 (Richtig) ---
+Frage: What authentication method does the Kafka connector use within Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+https://www.bing.com/search?q=What+authentication+method+does+the+Kafka+connector+use+within+Snowflake%3F&qs=n&form=QBRE&sp=-1&lq=1&pq=what+authentication+method+does+the+kafka+connector+use+within+snowflake%3F&sc=1-73&sk=&cvid=F1A4FEE251F74FFF9171AA41AD3EBA9D&ghsh=0&ghacc=0&ghpl=
+A https://docs.snowflake.com/en/user-guide/kafka-connector-install#download-the-kafka-connector-files
+--------------------------------------------------
+
+--- Frage Nr. 1048 (Richtig) ---
+Frage: Which of the following can be executed/called with Snowpipe?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+correct
+I think C  https://docs.snowflake.com/en/sql-reference/sql/create-pipe.html
+Shoud be D? https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro.html#snowpipe-ddl
+--------------------------------------------------
+
+--- Frage Nr. 673 (Richtig) ---
+Frage: For a multi-cluster virtual warehouse, which parameters are used to calculate the number of credits billed? (Choose two.)
+Deine Antwort:     B, C
+Korrekte Antwort:  B, C
+
+Erklärung:
+https://docs.snowflake.com/en/user-guide/warehouses-overview
+BC is correct
+--------------------------------------------------
+
+--- Frage Nr. 420 (Richtig) ---
+Frage: A network policy set at which level will override all other network policies?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct
+--------------------------------------------------
+
+--- Frage Nr. 706 (Richtig) ---
+Frage: What is the Fail-safe period for a transient table in the Snowflake Enterprise edition and higher?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Temporary and Transient Tables¶ To help manage the storage costs associated with Time Travel and Fail-safe, Snowflake provides two table types, temporary and transient, which do not incur the same fees as standard (i.e. permanent) tables:  Transient tables can have a Time Travel retention period of either 0 or 1 day.  Temporary tables can also have a Time Travel retention period of 0 or 1 day; however, this retention period ends as soon as the table is dropped or the session in which the table was created ends.  Transient and temporary tables have no Fail-safe period.  As a result, the maximum
+https://docs.snowflake.com/en/user-guide/tables-temp-transient Transient tables are similar to permanent tables with the key difference that they do not have a Fail-safe period
+--------------------------------------------------
+
+--- Frage Nr. 319 (Richtig) ---
+Frage: How can a user get the MOST detailed information about individual table storage details in Snowflake?
+Deine Antwort:     D
+Korrekte Antwort:  D
+
+Erklärung:
+D - table_storage_metrics view
+it's correct. https://docs.snowflake.com/en/sql-reference/account-usage/table_storage_metrics
+--------------------------------------------------
+
+--- Frage Nr. 527 (Richtig) ---
+Frage: Which metadata table will store the storage utilization information even for dropped tables?
+Deine Antwort:     B
+Korrekte Antwort:  B
+
+Erklärung:
+B is correct https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics
+"This view (TABLE_STORAGE_METRICS) displays table-level storage utilization information, which is used to calculate the storage billing for each table in the account, including tables that have been dropped, but are still incurring storage costs."
+B  https://docs.snowflake.com/en/sql-reference/info-schema/table_storage_metrics
+--------------------------------------------------
+
+--- Frage Nr. 874 (Richtig) ---
+Frage: What setting in Snowsight determines the databases, tables, and other objects that can be seen and the actions that can be performed on them?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+Switch your active role: While using Snowsight, you can change the active role in your current session. Your active role determines which pages in Snowsight you can access, as well as which databases, tables, and other objects you can see and the actions you can perform on them.
+A correct  https://docs.snowflake.com/en/user-guide/ui-snowsight-gs#:~:text=While%20using%20Snowsight%2C%20you%20can%20change%20the%20active,and%20the%20actions%20you%20can%20perform%20on%20them.
+--------------------------------------------------
+
+--- Frage Nr. 228 (Richtig) ---
+Frage: Which Snowflake architectural layer is responsible for a query execution plan?
+Deine Antwort:     C
+Korrekte Antwort:  C
+
+Erklärung:
+Cloud Services The cloud services layer is a collection of services that coordinate activities across Snowflake. These services tie together all of the different components of Snowflake in order to process user requests, from login to query dispatch. The cloud services layer also runs on compute instances provisioned by Snowflake from the cloud provider.  Services managed in this layer include:  Authentication  Infrastructure management  Metadata management  Query parsing and optimization  Access control
+https://docs.snowflake.com/en/user-guide/intro-key-concepts.html#query-processing
+--------------------------------------------------
+
+--- Frage Nr. 965 (Richtig) ---
+Frage: When should a multi-cluster virtual warehouse be used in Snowflake?
+Deine Antwort:     A
+Korrekte Antwort:  A
+
+Erklärung:
+A is correct.
+A correct. https://docs.snowflake.com/en/user-guide/warehouses-multicluster#what-is-a-multi-cluster-warehouse
+A correct - https://docs.snowflake.com/en/user-guide/warehouses-multicluster
+--------------------------------------------------
+
